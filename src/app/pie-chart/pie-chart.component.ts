@@ -20,7 +20,7 @@ export class PieChartComponent implements OnInit, OnChanges {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: false,
+        display: true,
         position: 'left',
       },
       datalabels: {
@@ -39,6 +39,8 @@ export class PieChartComponent implements OnInit, OnChanges {
     }
 
   };
+
+
   ngOnInit(): void {
 
   }
