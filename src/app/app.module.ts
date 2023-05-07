@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { NgChartsModule } from 'ng2-charts';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { PieChartShellComponent } from './pie-chart-shell/pie-chart-shell.component';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { MultiAxisBartChartComponent } from './multi-axis-bart-chart/multi-axis-bart-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PieChartComponent,
-    PieChartShellComponent
+    PieChartShellComponent,
+    BarChartComponent,
+    MultiAxisBartChartComponent
   ],
   imports: [
     BrowserModule,
