@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { ChartType,  } from 'chart.js';
@@ -7,9 +7,11 @@ import { ChartConfiguration, ChartData, } from 'chart.js';
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.scss']
+  styleUrls: ['./pie-chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PieChartComponent {
+
+export class PieChartComponent implements OnInit, OnChanges {
   public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [ DatalabelsPlugin ];
 
@@ -37,6 +39,14 @@ export class PieChartComponent {
     }
 
   };
+  ngOnInit(): void {
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+  }
+
   public pieChartData: ChartData<any> = {
     labels: [ 'রাজশাহী' , 'রংপুর', 'ময়মনসিংহ' , 'ঢাকা','চট্টগ্রাম','সিলেট','খুলনা', 'বরিশাল' ],
     datasets: [ {
