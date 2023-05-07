@@ -9,8 +9,6 @@ import { PieChartData } from '../model/pie-chart.model';
   styleUrls: ['./pie-chart-shell.component.scss']
 })
 export class PieChartShellComponent  implements OnInit {
-  // datasets:any=[ 'রাজশাহী' , 'রংপুর', 'ময়মনসিংহ' , 'ঢাকা','চট্টগ্রাম','সিলেট','খুলনা', 'বরিশাল' ]
-
 
   datasets:any=  {
     labels:[ 'রাজশাহী' , 'রংপুর', 'ময়মনসিংহ' , 'ঢাকা','চট্টগ্রাম','সিলেট','খুলনা', 'বরিশাল' ],

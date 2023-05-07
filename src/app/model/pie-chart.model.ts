@@ -1,6 +1,6 @@
 export interface PieChartData {
-  label?: string | null;
-  value?: string | null;
-  color?: string | null;
+  labels?: any;
+  data?: any;
+  backgroundColor?: any;
 
 }
