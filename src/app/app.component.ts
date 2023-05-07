@@ -4,9 +4,6 @@ import { ChartType,  } from 'chart.js';
 import { ChartConfiguration, ChartData, } from 'chart.js';
 
 
-
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,7 +18,7 @@ export class AppComponent {
 
     plugins: {
       legend: {
-        display: true,
+        display: false,
         position: 'left',
       },
       datalabels: {
@@ -33,16 +30,10 @@ export class AppComponent {
         color: 'black',
         anchor: 'end',
         align: 'end',
+         font: {
+              weight: 'bold'
+            },
       },
-
-
-      // datalabels: {
-      //   formatter: (value, ctx) => {
-      //     if (ctx.chart.data.labels) {
-      //       return ctx.chart.data.labels[ctx.dataIndex];
-      //     }
-      //   },
-      // },
     }
 
 
@@ -62,23 +53,13 @@ export class AppComponent {
         '#f205e6'
       ],
 
-
     } ],
-
-
-
-
 
   };
 
 
   public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [ DatalabelsPlugin ];
-
-
-
-
-
 
 
 }
