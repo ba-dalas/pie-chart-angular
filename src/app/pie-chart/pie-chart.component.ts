@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
-import { ChartType,  } from 'chart.js';
+import { ChartEvent, ChartType,  } from 'chart.js';
 import { ChartConfiguration, ChartData, } from 'chart.js';
 
 @Component({
@@ -14,6 +14,8 @@ import { ChartConfiguration, ChartData, } from 'chart.js';
 export class PieChartComponent implements OnInit, OnChanges {
 
   @Input() pieChartDataSets!:any ;
+
+  @Output() pieChartClicked = new EventEmitter<ChartEvent>();
 
   public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [ DatalabelsPlugin ];
@@ -65,6 +67,12 @@ export class PieChartComponent implements OnInit, OnChanges {
     } ],
 
   };
+
+  chartClicked(event:any){
+    console.log(event);
+    this.pieChartClicked.emit(event);
+
+  }
 
 }
 

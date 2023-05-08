@@ -1,3 +1,5 @@
 <app-pie-chart
 [pieChartDataSets]="pieChartDataSets$  | async"
-></app-pie-chart>
+(pieChartClicked)="viewChart($any($event))"
+>
+</app-pie-chart>

@@ -34,6 +34,10 @@ export class PieChartShellComponent  implements OnInit {
     this.pieChartDataSubject.next(this.datasets);
   }
 
+  viewChart(event:any){
+    console.log(event)
+  }
+
 
 }
 
