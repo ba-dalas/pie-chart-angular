@@ -18,7 +18,6 @@ export class PieChartComponent implements OnInit, OnChanges {
   public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [ DatalabelsPlugin ];
 
-
   ngOnInit(): void {
 
   }
@@ -33,11 +32,13 @@ export class PieChartComponent implements OnInit, OnChanges {
   public pieChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     maintainAspectRatio: false,
+    // this portion for showing title and its styling
     plugins: {
       legend: {
         display: true,
         position: 'left',
       },
+      // All style will be added here and commented portion for showing title instead of value
       datalabels: {
         // formatter: (value, ctx) => {
         //   if (ctx.chart.data.labels) {

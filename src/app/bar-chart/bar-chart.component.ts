@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
@@ -9,9 +9,22 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.scss']
 })
-export class BarChartComponent {
+export class BarChartComponent  implements OnInit, OnChanges{
 
+  @Input() barChartDataSets!:any ;
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+
+  ngOnInit(): void {
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.barChartData.labels= this.barChartDataSets.labels
+    this.barChartData.datasets[0].data=this.barChartDataSets.data
+    this.barChartData.datasets[0].backgroundColor=this.barChartDataSets.backgroundColor
+    console.log('this.barChartDataSets.data labels=====', this.barChartDataSets.labels)
+  }
 
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
@@ -24,9 +37,11 @@ export class BarChartComponent {
       }
     },
     plugins: {
+      // this portion for showing title
       legend: {
-        display: true,
+        display: false,
       },
+      // All style will be added here
       datalabels: {
         color: 'white',
         anchor: 'center',
@@ -45,18 +60,12 @@ export class BarChartComponent {
 
 
   public barChartData: ChartData<'bar'> = {
-
-    labels: ['2006', '2007', '2008', '2009'],
+    labels: [],
     datasets: [
       {
-        data: [11000, 12000, 15000, 17000],
-        label: 'Series A',
-        backgroundColor: [
-          '#63b598',
-          '#ce7d78',
-          '#0d5ac1',
-          '#f205e6',
-        ],
+        data: [],
+        // label: 'Series A',
+        backgroundColor: [ ],
       },
 
     ],
