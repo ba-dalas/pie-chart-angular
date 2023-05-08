@@ -49,7 +49,6 @@ export class LineChartComponent implements OnInit, OnChanges {
     this.lineChartData.datasets[0].data=this.lineChartDataSets.data
     this.lineChartData.datasets[0].backgroundColor=this.lineChartDataSets.backgroundColor+'80'
     this.lineChartData.datasets[0].borderColor=this.lineChartDataSets.borderColor+'80'
-    // this.lineChartData.datasets[0].
     console.log('lineChartDataSets', this.lineChartDataSets)
   }
 
@@ -87,9 +86,7 @@ export class LineChartComponent implements OnInit, OnChanges {
     this.lineChartClicked.emit(event);
   }
 
-  public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    // console.log(event, active);
-  }
+
 
 }
 
