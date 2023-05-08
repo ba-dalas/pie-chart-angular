@@ -9,6 +9,8 @@ import { PieChartShellComponent } from './pie-chart-shell/pie-chart-shell.compon
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { MultiAxisBartChartComponent } from './multi-axis-bart-chart/multi-axis-bart-chart.component';
 import { BarChartShellComponent } from './bar-chart-shell/bar-chart-shell.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
+import { MultiAxisLineChartComponent } from './multi-axis-line-chart/multi-axis-line-chart.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { BarChartShellComponent } from './bar-chart-shell/bar-chart-shell.compon
     PieChartShellComponent,
     BarChartComponent,
     MultiAxisBartChartComponent,
-    BarChartShellComponent
+    BarChartShellComponent,
+    LineChartComponent,
+    MultiAxisLineChartComponent
   ],
   imports: [
     BrowserModule,
