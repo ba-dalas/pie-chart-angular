@@ -26,4 +26,8 @@ export class BarChartShellComponent implements OnInit {
     this.barChartDataSubject.next(this.datasets);
   }
 
+  viewChart(event:any){
+    console.log(event)
+  }
+
 }

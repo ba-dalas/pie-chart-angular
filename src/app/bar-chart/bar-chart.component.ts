@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
@@ -12,6 +12,8 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 export class BarChartComponent  implements OnInit, OnChanges{
 
   @Input() barChartDataSets!:any ;
+
+  @Output() barChartClicked = new EventEmitter<ChartEvent>();
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
 
@@ -72,8 +74,9 @@ export class BarChartComponent  implements OnInit, OnChanges{
   };
 
   // events
-  public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
+  public chartClicked(event:any): void {
+    console.log(event);
+    this.barChartClicked.emit(event);
   }
 
   public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
@@ -81,3 +84,5 @@ export class BarChartComponent  implements OnInit, OnChanges{
   }
 
 }
+
+
