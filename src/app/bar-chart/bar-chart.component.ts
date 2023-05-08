@@ -30,7 +30,10 @@ export class BarChartComponent {
       datalabels: {
         color: 'white',
         anchor: 'center',
-        align: 'start'
+        align: 'center',
+        font: {
+          weight: 'bold'
+        },
       },
 
     }
@@ -46,7 +49,7 @@ export class BarChartComponent {
     labels: ['2006', '2007', '2008', '2009'],
     datasets: [
       {
-        data: [6000, 8000, 5000, 7000],
+        data: [11000, 12000, 15000, 17000],
         label: 'Series A',
         backgroundColor: [
           '#63b598',
