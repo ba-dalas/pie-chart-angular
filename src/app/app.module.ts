@@ -11,6 +11,7 @@ import { MultiAxisBartChartComponent } from './multi-axis-bart-chart/multi-axis-
 import { BarChartShellComponent } from './bar-chart-shell/bar-chart-shell.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { MultiAxisLineChartComponent } from './multi-axis-line-chart/multi-axis-line-chart.component';
+import { LineChartShellComponent } from './line-chart-shell/line-chart-shell.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MultiAxisLineChartComponent } from './multi-axis-line-chart/multi-axis-
     MultiAxisBartChartComponent,
     BarChartShellComponent,
     LineChartComponent,
-    MultiAxisLineChartComponent
+    MultiAxisLineChartComponent,
+    LineChartShellComponent
   ],
   imports: [
     BrowserModule,
