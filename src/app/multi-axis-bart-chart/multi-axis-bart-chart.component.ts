@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
-
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+
 
 
 @Component({
@@ -13,43 +12,79 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MultiAxisBartChartComponent {
-  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+  constructor() {
 
-  public barChartOptions: ChartConfiguration['options'] = {
-    responsive: true,
-    maintainAspectRatio: false,
-    // We use these empty structures as placeholders for dynamic theming.
-    scales: {
-      x: {},
-      y: {
-        min: 0,
-        max:1800
+  }
 
+  public lineChartData: ChartConfiguration['data'] = {
+    datasets: [
+      {
+        data: [ 65, 59, 80, 81, 56, 55, 40 ],
+        label: 'Applications',
+        backgroundColor: '#544BE9',
+        borderColor: 'rgba(148,159,177,1)',
+        pointBackgroundColor: 'rgba(148,159,177,1)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+        fill: 'origin',
       },
+
+      {
+        data: [ 180, 480, 770, 90, 1000, 270, 400 ],
+        label: 'Disposed',
+        yAxisID: 'y1',
+        backgroundColor: '#6AD880',
+        borderColor: 'red',
+        pointBackgroundColor: 'rgba(148,159,177,1)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+        fill: 'origin',
+      }
+    ],
+    labels: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July' ]
+  };
+
+  public lineChartOptions: ChartConfiguration['options'] = {
+    elements: {
 
     },
-    plugins: {
-      legend: {
-        display: true,
-      },
-      datalabels: {
-        anchor: 'end',
-        align: 'end'
+    scales: {
+      // We use this empty structure as a placeholder for dynamic theming.
+      y:
+        {
+          position: 'left',
+        },
+      y1: {
+        position: 'right',
+        grid: {
+          display:false
+          // color: 'rgba(255,0,0,0.3)',
+        },
+        // ticks: {
+        //   color: 'red'
+        // }
       }
+    },
+
+    plugins: {
+      legend: { display: true },
+      datalabels: {
+        color: 'white',
+        anchor: 'end',
+        align: 'start'
+      },
+
     }
   };
-  public barChartType: ChartType = 'bar';
+
+  public lineChartType: ChartType = 'bar';
   public barChartPlugins = [
     DataLabelsPlugin
   ];
 
-  public barChartData: ChartData<'bar'> = {
-    labels: [ 'Dhaka', 'Rajshahi', 'Rangpur', 'Sylhet' ],
-    datasets: [
-      { data: [ 8000, 1100, 9000, 5000 ], label: ' Applications' },
-      { data: [ 4000, 2000, 1000, 3000], label: 'Disposed' }
-    ]
-  };
+
 
   // events
   public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
@@ -57,21 +92,6 @@ export class MultiAxisBartChartComponent {
   }
 
   public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    // console.log(event, active);
+    console.log(event, active);
   }
-
-  public randomize(): void {
-    // Only Change 3 values
-    this.barChartData.datasets[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      Math.round(Math.random() * 100),
-      56,
-      Math.round(Math.random() * 100),
-      40 ];
-
-    this.chart?.update();
   }
-
-}
