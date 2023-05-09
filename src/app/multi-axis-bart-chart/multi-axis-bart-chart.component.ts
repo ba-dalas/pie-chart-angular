@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
@@ -11,15 +11,27 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
   styleUrls: ['./multi-axis-bart-chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MultiAxisBartChartComponent {
-  constructor() {
+export class MultiAxisBartChartComponent implements OnInit, OnChanges{
+
+  @Input() barChartDataSets!:any ;
+
+  @Output() barChartClicked = new EventEmitter<ChartEvent>();
+
+
+  ngOnInit(): void {
 
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+    console.log('this.barChartDataSets.data labels=====', this.barChartDataSets.labels)
+  }
+
 
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
       {
-        data: [ 65, 59, 80, 81, 56, 55, 40 ],
+        data: [ 8000, 1100, 9000, 5000 ],
         label: 'Applications',
         backgroundColor: '#544BE9',
         borderColor: 'rgba(148,159,177,1)',
@@ -31,7 +43,7 @@ export class MultiAxisBartChartComponent {
       },
 
       {
-        data: [ 180, 480, 770, 90, 1000, 270, 400 ],
+        data:  [ 4000, 2000, 1000, 3000],
         label: 'Disposed',
         yAxisID: 'y1',
         backgroundColor: '#6AD880',
@@ -43,7 +55,7 @@ export class MultiAxisBartChartComponent {
         fill: 'origin',
       }
     ],
-    labels: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July' ]
+    labels: [ 'Dhaka', 'Rajshahi', 'Rangpur', 'Sylhet' ]
   };
 
   public lineChartOptions: ChartConfiguration['options'] = {
@@ -87,11 +99,11 @@ export class MultiAxisBartChartComponent {
 
 
   // events
-  public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
+  public chartClicked(event:any): void {
+    console.log(event);
   }
 
-  public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
+  public chartHovered(event:any): void {
+
   }
   }
