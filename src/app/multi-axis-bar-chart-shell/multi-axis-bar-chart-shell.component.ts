@@ -10,11 +10,11 @@ import { PieChartData } from '../model/pie-chart.model';
 export class MultiAxisBarChartShellComponent implements OnInit {
 
   datasets:any=  {
-    data1: [ 123, 595, 594, 102, 92, 156 , 622, 487, 77],
-    data2: [ 507, 676, 636, 389,  217, 339 , 699, 740 , 107],
-    labels: [ '30-Apr', '01-May', '02-May', '03-May', '04-May', '05-May', '06-May','07-May','08-May'],
-    color1: "#3F7D20",
-    color2: "#FAA916",
+    data: [ 8000, 1100, 9000, 5000 ],
+    data2: [ 4000, 2000, 1000, 3000],
+    labels: [ 'Dhaka', 'Rajshahi', 'Rangpur', 'Sylhet' ],
+    color1:'#544BE9',
+    color2: '#6AD880',
 
   }
 

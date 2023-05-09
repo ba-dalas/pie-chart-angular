@@ -23,17 +23,22 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.barChartData.labels= this.barChartDataSets.labels
+    this.barChartData.datasets[0].data=this.barChartDataSets.data
+    this.barChartData.datasets[1].data=this.barChartDataSets.data2
+    this.barChartData.datasets[0].backgroundColor=this.barChartDataSets.color1
+    this.barChartData.datasets[1].backgroundColor=this.barChartDataSets.color2
 
     console.log('this.barChartDataSets.data labels=====', this.barChartDataSets.labels)
   }
 
 
-  public lineChartData: ChartConfiguration['data'] = {
+  public barChartData: ChartConfiguration['data'] = {
     datasets: [
       {
-        data: [ 8000, 1100, 9000, 5000 ],
+        data: [ ],
         label: 'Applications',
-        backgroundColor: '#544BE9',
+        backgroundColor: '',
         borderColor: 'rgba(148,159,177,1)',
         pointBackgroundColor: 'rgba(148,159,177,1)',
         pointBorderColor: '#fff',
@@ -43,10 +48,10 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
       },
 
       {
-        data:  [ 4000, 2000, 1000, 3000],
+        data:  [ ],
         label: 'Disposed',
         yAxisID: 'y1',
-        backgroundColor: '#6AD880',
+        backgroundColor: '',
         borderColor: 'red',
         pointBackgroundColor: 'rgba(148,159,177,1)',
         pointBorderColor: '#fff',
@@ -55,10 +60,10 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
         fill: 'origin',
       }
     ],
-    labels: [ 'Dhaka', 'Rajshahi', 'Rangpur', 'Sylhet' ]
+    labels: []
   };
 
-  public lineChartOptions: ChartConfiguration['options'] = {
+  public barChartOptions: ChartConfiguration['options'] = {
     elements: {
 
     },
@@ -91,7 +96,7 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
     }
   };
 
-  public lineChartType: ChartType = 'bar';
+  public barChartType: ChartType = 'bar';
   public barChartPlugins = [
     DataLabelsPlugin
   ];
@@ -101,6 +106,7 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
   // events
   public chartClicked(event:any): void {
     console.log(event);
+    this.barChartClicked.emit(event);
   }
 
   public chartHovered(event:any): void {
