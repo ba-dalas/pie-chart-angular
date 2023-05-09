@@ -1,27 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
-import { default as Annotation } from 'chartjs-plugin-annotation';
+
 
 @Component({
   selector: 'app-multi-axis-line-chart',
   templateUrl: './multi-axis-line-chart.component.html',
   styleUrls: ['./multi-axis-line-chart.component.scss']
 })
-export class MultiAxisLineChartComponent {
-   // private newLabel? = 'New label';
+export class MultiAxisLineChartComponent implements OnInit, OnChanges {
 
-   constructor() {
-    // Chart.register(Annotation)
+  @Input() multiAxisLineChartDataSets!:any ;
+
+  @Output() lineChartClicked = new EventEmitter<ChartEvent>();
+
+
+
+  ngOnInit(): void {
+
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.lineChartData.labels= this.multiAxisLineChartDataSets.labels
+    this.lineChartData.datasets[0].data= this.multiAxisLineChartDataSets.data1
+    this.lineChartData.datasets[1].data= this.multiAxisLineChartDataSets.data2
+    this.lineChartData.datasets[0].backgroundColor= this.multiAxisLineChartDataSets.color1+'80'
+    this.lineChartData.datasets[1].backgroundColor= this.multiAxisLineChartDataSets.color2+'80'
+
+    console.log('multiAxisLineChartDataSets', this.lineChartData.datasets[1].label)
+  }
+
 
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
 
       {
-        data: [ 123, 595, 594, 102, 92, 156 , 622, 487, 77],
+        data: [],
         label: 'Application',
-        backgroundColor: '#3F7D20'+ '80',
+        backgroundColor: '',
         borderColor: '#3F7D20'+ '80' ,
         pointBackgroundColor: 'rgba(148,159,177,1)',
         pointBorderColor: '#fff',
@@ -30,9 +46,9 @@ export class MultiAxisLineChartComponent {
         fill: 'origin',
       },
       {
-        data: [ 507, 676, 636, 389,  217, 339 , 699, 740 , 107],
+        data: [ ],
         label: 'Disposed',
-        backgroundColor: '#FAA916'+ '80',
+        backgroundColor: '',
         borderColor: '#FAA916' + '80',
         pointBackgroundColor: 'red',
         pointBorderColor: '#fff',
@@ -43,7 +59,7 @@ export class MultiAxisLineChartComponent {
       },
 
     ],
-    labels: [ '30-Apr', '01-May', '02-May', '03-May', '04-May', '05-May', '06-May','07-May','08-May'  ]
+    labels: [ ]
   };
 
   public lineChartOptions: ChartConfiguration['options'] = {
@@ -71,8 +87,9 @@ export class MultiAxisLineChartComponent {
 
 
   // events
-  public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
+  public chartClicked(event:any): void {
+    console.log(event);
+    this.lineChartClicked.emit(event);
   }
 
   public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {

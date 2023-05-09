@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
@@ -7,7 +7,8 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
-  styleUrls: ['./bar-chart.component.scss']
+  styleUrls: ['./bar-chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BarChartComponent  implements OnInit, OnChanges{
 

@@ -1,4 +1,4 @@
-import { Component , EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild  } from '@angular/core';
+import { ChangeDetectionStrategy, Component , EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild  } from '@angular/core';
 
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts'
@@ -7,7 +7,8 @@ import { default as Annotation } from 'chartjs-plugin-annotation';
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
-  styleUrls: ['./line-chart.component.scss']
+  styleUrls: ['./line-chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LineChartComponent implements OnInit, OnChanges {
 

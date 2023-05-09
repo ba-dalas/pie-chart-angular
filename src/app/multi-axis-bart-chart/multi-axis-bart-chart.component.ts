@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
@@ -9,7 +9,8 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 @Component({
   selector: 'app-multi-axis-bart-chart',
   templateUrl: './multi-axis-bart-chart.component.html',
-  styleUrls: ['./multi-axis-bart-chart.component.scss']
+  styleUrls: ['./multi-axis-bart-chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MultiAxisBartChartComponent {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
