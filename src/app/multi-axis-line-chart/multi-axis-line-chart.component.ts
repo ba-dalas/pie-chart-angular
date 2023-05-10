@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -15,6 +16,10 @@ export class MultiAxisLineChartComponent implements OnInit, OnChanges {
   @Output() lineChartClicked = new EventEmitter<ChartEvent>();
 
 
+  constructor(private readonly location: Location) {
+
+
+  }
 
   ngOnInit(): void {
 
@@ -94,6 +99,10 @@ export class MultiAxisLineChartComponent implements OnInit, OnChanges {
 
   public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
     // console.log(event, active);
+  }
+
+  goToBack(){
+    this.location.back();
   }
 
 }

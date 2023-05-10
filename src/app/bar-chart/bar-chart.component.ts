@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnI
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -16,6 +17,10 @@ export class BarChartComponent  implements OnInit, OnChanges{
 
   @Output() barChartClicked = new EventEmitter<ChartEvent>();
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+  constructor(
+    private readonly location: Location
+  ) { }
 
 
   ngOnInit(): void {
@@ -82,6 +87,10 @@ export class BarChartComponent  implements OnInit, OnChanges{
 
   public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
     // console.log(event, active);
+  }
+
+  goToBack(){
+    this.location.back();
   }
 
 }

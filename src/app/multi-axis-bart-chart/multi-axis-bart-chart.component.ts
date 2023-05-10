@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnI
 
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+import { Location } from '@angular/common';
 
 
 
@@ -16,6 +17,11 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
   @Input() barChartDataSets!:any ;
 
   @Output() barChartClicked = new EventEmitter<ChartEvent>();
+
+  constructor(private readonly location: Location) {
+
+
+  }
 
 
   ngOnInit(): void {
@@ -109,7 +115,10 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
     this.barChartClicked.emit(event);
   }
 
-  public chartHovered(event:any): void {
+  public chartHovered(event:any): void {}
 
+  goToBack(){
+    this.location.back();
   }
+
   }

@@ -14,6 +14,9 @@ import { MultiAxisLineChartComponent } from './multi-axis-line-chart/multi-axis-
 import { LineChartShellComponent } from './line-chart-shell/line-chart-shell.component';
 import { MultiAxisLineChartShellComponent } from './multi-axis-line-chart-shell/multi-axis-line-chart-shell.component';
 import { MultiAxisBarChartShellComponent } from './multi-axis-bar-chart-shell/multi-axis-bar-chart-shell.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -29,12 +32,15 @@ import { MultiAxisBarChartShellComponent } from './multi-axis-bar-chart-shell/mu
     LineChartShellComponent,
     MultiAxisLineChartShellComponent,
     MultiAxisBarChartShellComponent,
+    HomeComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgChartsModule
+    NgChartsModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component , EventEmitter, Input, OnChanges, On
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts'
 import { default as Annotation } from 'chartjs-plugin-annotation';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-line-chart',
@@ -16,6 +17,8 @@ export class LineChartComponent implements OnInit, OnChanges {
 
   @Output() lineChartClicked = new EventEmitter<ChartEvent>();
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
+
+
 
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
@@ -36,8 +39,9 @@ export class LineChartComponent implements OnInit, OnChanges {
   };
 
 
-  constructor() {
+  constructor(private readonly location: Location) {
     Chart.register(Annotation)
+
   }
 
 
@@ -85,6 +89,10 @@ export class LineChartComponent implements OnInit, OnChanges {
   public chartClicked(event:any): void {
     console.log(event);
     this.lineChartClicked.emit(event);
+  }
+
+  goToBack(){
+    this.location.back();
   }
 
 
