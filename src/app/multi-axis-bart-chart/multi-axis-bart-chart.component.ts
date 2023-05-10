@@ -70,6 +70,7 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
   };
 
   public barChartOptions: ChartConfiguration['options'] = {
+    maintainAspectRatio: false,
     elements: {
 
     },

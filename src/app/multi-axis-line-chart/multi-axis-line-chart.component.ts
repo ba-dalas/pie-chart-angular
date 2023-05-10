@@ -68,6 +68,7 @@ export class MultiAxisLineChartComponent implements OnInit, OnChanges {
   };
 
   public lineChartOptions: ChartConfiguration['options'] = {
+    maintainAspectRatio: false,
     elements: {
       line: {
         tension: 0.5

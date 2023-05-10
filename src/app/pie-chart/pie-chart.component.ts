@@ -43,8 +43,9 @@ export class PieChartComponent implements OnInit, OnChanges {
     plugins: {
       legend: {
         display: true,
-        position: 'left',
+        position: 'right',
       },
+
       // All style will be added here and commented portion for showing title instead of value
       datalabels: {
         // formatter: (value, ctx) => {
