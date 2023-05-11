@@ -12,7 +12,7 @@ import { ChartDataSet } from '../model/chart';
 })
 export class MultiAxisLineChartComponent implements OnInit, OnChanges {
 
-  @Input() multiAxisLineChartDataSets!: ChartDataSet[] | null;
+  @Input() multiAxisLineChartDataSets!: ChartDataSet | null;
 
   @Output() lineChartClicked = new EventEmitter<ChartEvent>();
 
@@ -28,15 +28,15 @@ export class MultiAxisLineChartComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    if (this.multiAxisLineChartDataSets && this.multiAxisLineChartDataSets.length > 0 && this.multiAxisLineChartDataSets[0].backgroundColor
-       &&this.multiAxisLineChartDataSets[0].captions && this.multiAxisLineChartDataSets[0].value){
-      this.lineChartData.labels= this.multiAxisLineChartDataSets[0].labels
-      this.lineChartData.datasets[0].data= this.multiAxisLineChartDataSets[0].value[0]
-      this.lineChartData.datasets[1].data= this.multiAxisLineChartDataSets[0].value[1]
-      this.lineChartData.datasets[0].backgroundColor= this.multiAxisLineChartDataSets[0].backgroundColor[0]+'80'
-      this.lineChartData.datasets[1].backgroundColor= this.multiAxisLineChartDataSets[0].backgroundColor[1]+'80'
-      this.lineChartData.datasets[0].label= this.multiAxisLineChartDataSets[0].captions[0]
-      this.lineChartData.datasets[1].label= this.multiAxisLineChartDataSets[0].captions[1]
+    if (this.multiAxisLineChartDataSets && this.multiAxisLineChartDataSets.value  && this.multiAxisLineChartDataSets.backgroundColor
+      && this.multiAxisLineChartDataSets.captions){
+      this.lineChartData.labels= this.multiAxisLineChartDataSets.labels
+      this.lineChartData.datasets[0].data= this.multiAxisLineChartDataSets.value[0]
+      this.lineChartData.datasets[1].data= this.multiAxisLineChartDataSets.value[1]
+      this.lineChartData.datasets[0].backgroundColor= this.multiAxisLineChartDataSets.backgroundColor[0]+'80'
+      this.lineChartData.datasets[1].backgroundColor= this.multiAxisLineChartDataSets.backgroundColor[1]+'80'
+      this.lineChartData.datasets[0].label= this.multiAxisLineChartDataSets.captions[0]
+      this.lineChartData.datasets[1].label= this.multiAxisLineChartDataSets.captions[1]
 
     }
 

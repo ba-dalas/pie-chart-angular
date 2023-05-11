@@ -20,12 +20,12 @@ export class MultiAxisLineChartShellComponent  implements OnInit {
 
   }
 
-  private multiAxislineChartDataSubject = new BehaviorSubject<ChartDataSet[]>([]);
+  private multiAxislineChartDataSubject = new BehaviorSubject<ChartDataSet | null>(null);
 
-  multiAxisLineChartDataSets$: Observable<ChartDataSet[]> = this.multiAxislineChartDataSubject.asObservable();
+  multiAxisLineChartDataSets$: Observable<ChartDataSet | null> = this.multiAxislineChartDataSubject.asObservable();
 
   ngOnInit(): void {
-    this.multiAxislineChartDataSubject.next([this.datasets]);
+    this.multiAxislineChartDataSubject.next(this.datasets);
   }
 
   viewChart(event:any){

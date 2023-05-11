@@ -23,7 +23,7 @@ import { ChartDataSet } from '../model/chart';
 })
 export class PieChartComponent implements OnInit, OnChanges {
 
-  @Input() pieChartDataSets!: ChartDataSet[] | null;
+  @Input() pieChartDataSets!: ChartDataSet | null;
 
   @Output() pieChartClicked = new EventEmitter<ChartEvent>();
 
@@ -37,19 +37,19 @@ export class PieChartComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (
       this.pieChartDataSets &&
-      this.pieChartDataSets.length > 0 && this.pieChartDataSets[0].value
+      this.pieChartDataSets.value
     ) {
-      this.pieChartData.labels = this.pieChartDataSets[0].labels;
-      this.pieChartData.datasets[0].data = this.pieChartDataSets[0].value[0]
+      this.pieChartData.labels = this.pieChartDataSets.labels;
+      this.pieChartData.datasets[0].data = this.pieChartDataSets.value[0]
       this.pieChartData.datasets[0].backgroundColor =
-        this.pieChartDataSets[0].backgroundColor;
+        this.pieChartDataSets.backgroundColor;
 
       if (
         this.pieChartOptions &&
         this.pieChartOptions.plugins &&
         this.pieChartOptions.plugins.datalabels
       ) {
-        this.pieChartOptions.plugins.datalabels.color = this.pieChartDataSets[0].textColor;
+        this.pieChartOptions.plugins.datalabels.color = this.pieChartDataSets.textColor;
       }
     }
   }

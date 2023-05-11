@@ -22,12 +22,12 @@ export class MultiAxisBarChartShellComponent implements OnInit {
 
   }
 
-  private barChartDataSubject = new BehaviorSubject<ChartDataSet[]>([]);
+  private barChartDataSubject = new BehaviorSubject<ChartDataSet | null>(null);
 
-  barChartDataSets$: Observable<ChartDataSet[]> = this.barChartDataSubject.asObservable();
+  barChartDataSets$: Observable<ChartDataSet| null> = this.barChartDataSubject.asObservable();
 
   ngOnInit(): void {
-    this.barChartDataSubject.next([this.datasets]);
+    this.barChartDataSubject.next(this.datasets);
   }
 
   viewChart(event:any){

@@ -29,12 +29,12 @@ export class PieChartShellComponent implements OnInit {
     }
 
 
-  private pieChartDataSubject = new BehaviorSubject<ChartDataSet[]>([]);
+  private pieChartDataSubject = new BehaviorSubject<ChartDataSet| null>(null);
 
-  pieChartDataSets$: Observable<ChartDataSet[]> = this.pieChartDataSubject.asObservable();
+  pieChartDataSets$: Observable<ChartDataSet| null> = this.pieChartDataSubject.asObservable();
 
   ngOnInit(): void {
-    this.pieChartDataSubject.next([this.datasets]);
+    this.pieChartDataSubject.next(this.datasets);
 
   }
 
