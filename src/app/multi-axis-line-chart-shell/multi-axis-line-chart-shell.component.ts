@@ -18,6 +18,7 @@ export class MultiAxisLineChartShellComponent  implements OnInit {
       '#FAA916',
     ],
     labels: [ '30-Apr', '01-May', '02-May', '03-May', '04-May', '05-May', '06-May','07-May','08-May'],
+    captions: [ 'Applications', 'Disposed' ],
     // color1: "#3F7D20",
     // color2: "#FAA916",
 

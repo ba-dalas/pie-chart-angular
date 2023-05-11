@@ -28,14 +28,14 @@ export class MultiAxisLineChartComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    if (this.multiAxisLineChartDataSets && this.multiAxisLineChartDataSets.length > 0 && this.multiAxisLineChartDataSets[0].backgroundColor){
+    if (this.multiAxisLineChartDataSets && this.multiAxisLineChartDataSets.length > 0 && this.multiAxisLineChartDataSets[0].backgroundColor &&this.multiAxisLineChartDataSets[0].captions){
       this.lineChartData.labels= this.multiAxisLineChartDataSets[0].labels
       this.lineChartData.datasets[0].data= this.multiAxisLineChartDataSets[0].value1!
       this.lineChartData.datasets[1].data= this.multiAxisLineChartDataSets[0].value2!
       this.lineChartData.datasets[0].backgroundColor= this.multiAxisLineChartDataSets[0].backgroundColor[0]+'80'
       this.lineChartData.datasets[1].backgroundColor= this.multiAxisLineChartDataSets[0].backgroundColor[1]+'80'
-
-      // console.log('color test',this.multiAxisLineChartDataSets[0].backgroundColor[1] )
+      this.lineChartData.datasets[0].label= this.multiAxisLineChartDataSets[0].captions[0]
+      this.lineChartData.datasets[1].label= this.multiAxisLineChartDataSets[0].captions[1]
 
     }
 
