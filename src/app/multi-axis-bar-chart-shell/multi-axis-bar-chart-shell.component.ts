@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { PieChartData } from '../model/pie-chart.model';
-import { MultiChartData } from '../model/multi-chart.model';
 import {  ChartDataSet } from '../model/chart';
 
 @Component({
@@ -13,8 +11,6 @@ export class MultiAxisBarChartShellComponent implements OnInit {
 
   datasets:ChartDataSet=  {
     value: [[ 8000, 1100, 9000, 5000 ], [ 4000, 2000, 1000, 3000]],
-    // value1: [ 8000, 1100, 9000, 5000 ],
-    // value2: [ 4000, 2000, 1000, 3000],
     labels: [ 'Dhaka', 'Rajshahi', 'Rangpur', 'Sylhet' ],
     captions: [ 'Applications', 'Disposed' ],
     backgroundColor: [
@@ -23,8 +19,6 @@ export class MultiAxisBarChartShellComponent implements OnInit {
 
     ],
     textColor:'#ffffff'
-    // color1:'#544BE9',
-    // color2: '#6AD880',
 
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
-import { PieChartData } from '../model/pie-chart.model';
+import { ChartDataSet } from '../model/chart';
 
 @Component({
   selector: 'app-pie-chart-shell',
@@ -10,10 +10,10 @@ import { PieChartData } from '../model/pie-chart.model';
 })
 export class PieChartShellComponent implements OnInit {
 
-  datasets: PieChartData =
+  datasets: ChartDataSet =
     {
       labels: ['রাজশাহী', 'রংপুর', 'ময়মনসিংহ', 'ঢাকা', 'চট্টগ্রাম', 'সিলেট', 'খুলনা', 'বরিশাল'],
-      data: [300, 500, 100, 200, 400, 600, 700, 900],
+      value: [[300, 500, 100, 200, 400, 600, 700, 900],],
       backgroundColor: [
         '#63b598',
         '#ce7d78',
@@ -29,9 +29,9 @@ export class PieChartShellComponent implements OnInit {
     }
 
 
-  private pieChartDataSubject = new BehaviorSubject<PieChartData[]>([]);
+  private pieChartDataSubject = new BehaviorSubject<ChartDataSet[]>([]);
 
-  pieChartDataSets$: Observable<PieChartData[]> = this.pieChartDataSubject.asObservable();
+  pieChartDataSets$: Observable<ChartDataSet[]> = this.pieChartDataSubject.asObservable();
 
   ngOnInit(): void {
     this.pieChartDataSubject.next([this.datasets]);

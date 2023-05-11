@@ -13,7 +13,7 @@ import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { ChartEvent, ChartType } from 'chart.js';
 import { ChartConfiguration, ChartData } from 'chart.js';
 import { Location } from '@angular/common';
-import { PieChartData } from '../model/pie-chart.model';
+import { ChartDataSet } from '../model/chart';
 
 @Component({
   selector: 'app-pie-chart',
@@ -23,7 +23,7 @@ import { PieChartData } from '../model/pie-chart.model';
 })
 export class PieChartComponent implements OnInit, OnChanges {
 
-  @Input() pieChartDataSets!: PieChartData[] | null;
+  @Input() pieChartDataSets!: ChartDataSet[] | null;
 
   @Output() pieChartClicked = new EventEmitter<ChartEvent>();
 
@@ -37,10 +37,10 @@ export class PieChartComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (
       this.pieChartDataSets &&
-      this.pieChartDataSets.length > 0
+      this.pieChartDataSets.length > 0 && this.pieChartDataSets[0].value
     ) {
       this.pieChartData.labels = this.pieChartDataSets[0].labels;
-      this.pieChartData.datasets[0].data = this.pieChartDataSets[0].data!;
+      this.pieChartData.datasets[0].data = this.pieChartDataSets[0].value[0]
       this.pieChartData.datasets[0].backgroundColor =
         this.pieChartDataSets[0].backgroundColor;
 
