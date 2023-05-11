@@ -4,7 +4,7 @@ import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts'
 import { default as Annotation } from 'chartjs-plugin-annotation';
 import { Location } from '@angular/common';
-import { PieChartData } from '../model/pie-chart.model';
+import { ChartDataSet } from '../model/chart';
 
 @Component({
   selector: 'app-line-chart',
@@ -14,7 +14,7 @@ import { PieChartData } from '../model/pie-chart.model';
 })
 export class LineChartComponent implements OnInit, OnChanges {
 
-  @Input() lineChartDataSets!: PieChartData[] | null;
+  @Input() lineChartDataSets!: ChartDataSet[] | null;
 
   @Output() lineChartClicked = new EventEmitter<ChartEvent>();
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
@@ -50,9 +50,9 @@ export class LineChartComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    if (this.lineChartDataSets && this.lineChartDataSets.length > 0){
+    if (this.lineChartDataSets && this.lineChartDataSets.length > 0 && this.lineChartDataSets[0].value){
       this.lineChartData.labels= this.lineChartDataSets[0].labels
-      this.lineChartData.datasets[0].data = this.lineChartDataSets[0].data!;
+      this.lineChartData.datasets[0].data = this.lineChartDataSets[0].value[0];
       this.lineChartData.datasets[0].backgroundColor=this.lineChartDataSets[0].backgroundColor+'80'
       console.log('lineChartDataSets', this.lineChartDataSets)
     }

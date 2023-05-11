@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PieChartData } from '../model/pie-chart.model';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ChartDataSet } from '../model/chart';
 
 @Component({
   selector: 'app-line-chart-shell',
@@ -9,17 +9,17 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class LineChartShellComponent  implements OnInit {
 
-  datasets:PieChartData=  {
-    data: [ 18, 54, 24, 5],
+  datasets:ChartDataSet=  {
+    value: [[ 18, 54, 24, 5]],
     backgroundColor: [ '#95DEE3'],
     // borderColor: '#95DEE3',
     labels: [ 'Feb-23', 'Mar-23', 'Apr-23', 'May-23' ]
 
   }
 
-  private lineChartDataSubject = new BehaviorSubject<PieChartData[]>([]);
+  private lineChartDataSubject = new BehaviorSubject<ChartDataSet[]>([]);
 
-  lineChartDataSets$: Observable<PieChartData[]> = this.lineChartDataSubject.asObservable();
+  lineChartDataSets$: Observable<ChartDataSet[]> = this.lineChartDataSubject.asObservable();
 
   ngOnInit(): void {
     this.lineChartDataSubject.next([this.datasets]);
