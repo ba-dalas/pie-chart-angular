@@ -66,7 +66,7 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
     datasets: [
       {
         data: [ ],
-        label: this.legend,
+        label: '',
         backgroundColor: '',
         borderColor: 'rgba(148,159,177,1)',
         pointBackgroundColor: 'rgba(148,159,177,1)',
