@@ -48,7 +48,7 @@ export class MultiAxisLineChartComponent implements OnInit, OnChanges {
 
       {
         data: [],
-        label: 'Application',
+        label: '',
         backgroundColor: '',
         borderColor: '#3F7D20'+ '80' ,
         pointBackgroundColor: 'rgba(148,159,177,1)',
@@ -59,7 +59,7 @@ export class MultiAxisLineChartComponent implements OnInit, OnChanges {
       },
       {
         data: [ ],
-        label: 'Disposed',
+        label: '',
         backgroundColor: '',
         borderColor: '#FAA916' + '80',
         pointBackgroundColor: 'red',

@@ -17,12 +17,12 @@ export class LineChartShellComponent  implements OnInit {
 
   }
 
-  private lineChartDataSubject = new BehaviorSubject<ChartDataSet[]>([]);
+  private lineChartDataSubject = new BehaviorSubject<ChartDataSet | null>(null);
 
-  lineChartDataSets$: Observable<ChartDataSet[]> = this.lineChartDataSubject.asObservable();
+  lineChartDataSets$: Observable<ChartDataSet | null> = this.lineChartDataSubject.asObservable();
 
   ngOnInit(): void {
-    this.lineChartDataSubject.next([this.datasets]);
+    this.lineChartDataSubject.next(this.datasets);
   }
 
   viewChart(event:any){
