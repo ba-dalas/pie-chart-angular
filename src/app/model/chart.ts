@@ -1,11 +1,11 @@
-export interface ChartData {
+export interface ChartDataSet {
   labels?: string[];
-  value1?:  number[];
-  value2?:  number[];
   captions?: string[];
+  value?:  number[][];
   backgroundColor?: string[];
   textColor?:string;
   borderColor?: string;
+
 
 }
 

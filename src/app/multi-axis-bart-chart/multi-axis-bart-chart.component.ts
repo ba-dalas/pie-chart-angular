@@ -3,7 +3,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnI
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { Location } from '@angular/common';
-import { MultiChartData } from '../model/multi-chart.model';
+import { ChartDataSet } from '../model/chart';
+
+
 
 
 
@@ -15,7 +17,7 @@ import { MultiChartData } from '../model/multi-chart.model';
 })
 export class MultiAxisBartChartComponent implements OnInit, OnChanges{
 
-  @Input() barChartDataSets!: MultiChartData[] | null;
+  @Input() barChartDataSets!: ChartDataSet[] | null;
 
   @Output() barChartClicked = new EventEmitter<ChartEvent>();
 
@@ -30,14 +32,18 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(this.barChartDataSets && this.barChartDataSets.length > 0  && this.barChartDataSets[0].backgroundColor&&this.barChartDataSets[0].captions){
+
+
+    if(this.barChartDataSets && this.barChartDataSets.length > 0  && this.barChartDataSets[0].backgroundColor&&this.barChartDataSets[0].captions &&this.barChartDataSets[0].value){
     this.barChartData.labels= this.barChartDataSets[0].labels
-    this.barChartData.datasets[0].data=this.barChartDataSets[0].value1!
-    this.barChartData.datasets[1].data=this.barChartDataSets[0].value1!
+    this.barChartData.datasets[0].data= this.barChartDataSets[0].value[0]
+    this.barChartData.datasets[1].data= this.barChartDataSets[0].value[1]
     this.barChartData.datasets[0].backgroundColor=this.barChartDataSets[0].backgroundColor[0]
     this.barChartData.datasets[1].backgroundColor=this.barChartDataSets[0].backgroundColor[1]
     this.barChartData.datasets[0].label=this.barChartDataSets[0].captions[0]
     this.barChartData.datasets[1].label=this.barChartDataSets[0].captions[1]
+
+    console.log('value check', this.barChartDataSets[0].value[0])
 
     if (
       this.barChartOptions &&
@@ -53,12 +59,13 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
 
   }
 
+  legend = 'Approved'
 
   public barChartData: ChartConfiguration['data'] = {
     datasets: [
       {
         data: [ ],
-        label: '',
+        label: this.legend,
         backgroundColor: '',
         borderColor: 'rgba(148,159,177,1)',
         pointBackgroundColor: 'rgba(148,159,177,1)',

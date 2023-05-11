@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { PieChartData } from '../model/pie-chart.model';
 import { MultiChartData } from '../model/multi-chart.model';
+import {  ChartDataSet } from '../model/chart';
 
 @Component({
   selector: 'app-multi-axis-bar-chart-shell',
@@ -10,9 +11,10 @@ import { MultiChartData } from '../model/multi-chart.model';
 })
 export class MultiAxisBarChartShellComponent implements OnInit {
 
-  datasets:MultiChartData=  {
-    value1: [ 8000, 1100, 9000, 5000 ],
-    value2: [ 4000, 2000, 1000, 3000],
+  datasets:ChartDataSet=  {
+    value: [[ 8000, 1100, 9000, 5000 ], [ 4000, 2000, 1000, 3000]],
+    // value1: [ 8000, 1100, 9000, 5000 ],
+    // value2: [ 4000, 2000, 1000, 3000],
     labels: [ 'Dhaka', 'Rajshahi', 'Rangpur', 'Sylhet' ],
     captions: [ 'Applications', 'Disposed' ],
     backgroundColor: [
@@ -26,9 +28,9 @@ export class MultiAxisBarChartShellComponent implements OnInit {
 
   }
 
-  private barChartDataSubject = new BehaviorSubject<PieChartData[]>([]);
+  private barChartDataSubject = new BehaviorSubject<ChartDataSet[]>([]);
 
-  barChartDataSets$: Observable<PieChartData[]> = this.barChartDataSubject.asObservable();
+  barChartDataSets$: Observable<ChartDataSet[]> = this.barChartDataSubject.asObservable();
 
   ngOnInit(): void {
     this.barChartDataSubject.next([this.datasets]);
