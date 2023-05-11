@@ -3,7 +3,7 @@ import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { Location } from '@angular/common';
-import { PieChartData } from '../model/pie-chart.model';
+import { ChartDataSet } from '../model/chart';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { PieChartData } from '../model/pie-chart.model';
 })
 export class BarChartComponent implements OnInit, OnChanges {
 
-  @Input() barChartDataSets!: PieChartData[] | null;
+  @Input() barChartDataSets!: ChartDataSet[] | null;
 
   @Output() barChartClicked = new EventEmitter<ChartEvent>();
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
@@ -29,9 +29,9 @@ export class BarChartComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.barChartDataSets && this.barChartDataSets.length > 0) {
+    if (this.barChartDataSets && this.barChartDataSets.length > 0 && this.barChartDataSets[0].value) {
       this.barChartData.labels = this.barChartDataSets[0].labels
-      this.barChartData.datasets[0].data = this.barChartDataSets[0].data!;
+      this.barChartData.datasets[0].data = this.barChartDataSets[0].value[0];
       this.barChartData.datasets[0].backgroundColor = this.barChartDataSets[0].backgroundColor
 
       if (
