@@ -39,6 +39,14 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
     this.barChartData.datasets[0].label=this.barChartDataSets[0].captions[0]
     this.barChartData.datasets[1].label=this.barChartDataSets[0].captions[1]
 
+    if (
+      this.barChartOptions &&
+      this.barChartOptions.plugins &&
+      this.barChartOptions.plugins.datalabels
+    ) {
+      this.barChartOptions.plugins.datalabels.color = this.barChartDataSets[0].textColor;
+    }
+
     console.log('this.barChartDataSets.data labels=====', this.barChartDataSets[0].labels)
 
     }
@@ -102,7 +110,7 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
     plugins: {
       legend: { display: true },
       datalabels: {
-        color: 'white',
+        color: '',
         anchor: 'end',
         align: 'start'
       },
