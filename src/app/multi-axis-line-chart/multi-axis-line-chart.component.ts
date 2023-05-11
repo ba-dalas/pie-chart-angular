@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { Location } from '@angular/common';
+import { MultiChartData } from '../model/multi-chart.model';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { Location } from '@angular/common';
 })
 export class MultiAxisLineChartComponent implements OnInit, OnChanges {
 
-  @Input() multiAxisLineChartDataSets!:any ;
+  @Input() multiAxisLineChartDataSets!: MultiChartData[] | null;
 
   @Output() lineChartClicked = new EventEmitter<ChartEvent>();
 
@@ -26,13 +27,18 @@ export class MultiAxisLineChartComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.lineChartData.labels= this.multiAxisLineChartDataSets.labels
-    this.lineChartData.datasets[0].data= this.multiAxisLineChartDataSets.data1
-    this.lineChartData.datasets[1].data= this.multiAxisLineChartDataSets.data2
-    this.lineChartData.datasets[0].backgroundColor= this.multiAxisLineChartDataSets.color1+'80'
-    this.lineChartData.datasets[1].backgroundColor= this.multiAxisLineChartDataSets.color2+'80'
 
-    console.log('multiAxisLineChartDataSets', this.lineChartData.datasets[1].label)
+    if (this.multiAxisLineChartDataSets && this.multiAxisLineChartDataSets.length > 0 && this.multiAxisLineChartDataSets[0].backgroundColor){
+      this.lineChartData.labels= this.multiAxisLineChartDataSets[0].labels
+      this.lineChartData.datasets[0].data= this.multiAxisLineChartDataSets[0].value1!
+      this.lineChartData.datasets[1].data= this.multiAxisLineChartDataSets[0].value2!
+      this.lineChartData.datasets[0].backgroundColor= this.multiAxisLineChartDataSets[0].backgroundColor[0]+'80'
+      this.lineChartData.datasets[1].backgroundColor= this.multiAxisLineChartDataSets[0].backgroundColor[1]+'80'
+
+      // console.log('color test',this.multiAxisLineChartDataSets[0].backgroundColor[1] )
+
+    }
+
   }
 
 
