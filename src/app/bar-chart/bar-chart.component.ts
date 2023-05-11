@@ -34,8 +34,6 @@ export class BarChartComponent  implements OnInit, OnChanges{
       this.barChartData.datasets[0].data = this.barChartDataSets[0].data!;
       this.barChartData.datasets[0].backgroundColor=this.barChartDataSets[0].backgroundColor
 
-
-
       // console.log('this.barChartDataSets.data labels=====', this.barChartDataSets[0].textColor)
       // console.log('this.pieChartDataSets.data=====', this.barChartOptions?.plugins?.datalabels?.color);
 

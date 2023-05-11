@@ -38,13 +38,16 @@ export class PieChartComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    if (this.pieChartDataSets && this.pieChartDataSets.length > 0) {
+    if (this.pieChartDataSets && this.pieChartDataSets.length > 0 &&this.pieChartDataSets[0].textColor) {
       this.pieChartData.labels = this.pieChartDataSets[0].labels;
       this.pieChartData.datasets[0].data = this.pieChartDataSets[0].data!;
       this.pieChartData.datasets[0].backgroundColor =this.pieChartDataSets[0].backgroundColor;
-      // console.log('this.pieChartDataSets.data=====', this.pieChartDataSets[0].textColor);
+      // this.pieChartOptions?.plugins?.datalabels?.color='red';
+      // console.log('textColor=====', this.pieChartDataSets[0].textColor);
 
     }
+
+
 
 //  console.log('this.pieChartDataSets.data=====', this.pieChartOptions?.plugins?.datalabels?.color);
   }
