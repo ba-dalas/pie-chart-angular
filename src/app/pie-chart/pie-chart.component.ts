@@ -22,6 +22,7 @@ import { PieChartData } from '../model/pie-chart.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PieChartComponent implements OnInit, OnChanges {
+  // textColor: string ='#ffffff' ;
   @Input() pieChartDataSets!: PieChartData[] | null;
 
   @Output() pieChartClicked = new EventEmitter<ChartEvent>();
@@ -31,21 +32,25 @@ export class PieChartComponent implements OnInit, OnChanges {
 
   constructor(private readonly location: Location) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
 
     if (this.pieChartDataSets && this.pieChartDataSets.length > 0) {
       this.pieChartData.labels = this.pieChartDataSets[0].labels;
       this.pieChartData.datasets[0].data = this.pieChartDataSets[0].data!;
-      this.pieChartData.datasets[0].backgroundColor =
-        this.pieChartDataSets[0].backgroundColor;
-      // console.log('this.pieChartDataSets.data=====', this.pieChartDataSets);
+      this.pieChartData.datasets[0].backgroundColor =this.pieChartDataSets[0].backgroundColor;
+      // console.log('this.pieChartDataSets.data=====', this.pieChartDataSets[0].textColor);
+
     }
 
+//  console.log('this.pieChartDataSets.data=====', this.pieChartOptions?.plugins?.datalabels?.color);
   }
 
   public pieChartOptions: ChartConfiguration['options'] = {
+
     responsive: true,
     maintainAspectRatio: false,
     // this portion for showing title and its styling
@@ -62,7 +67,7 @@ export class PieChartComponent implements OnInit, OnChanges {
         //     return ctx.chart.data.labels[ctx.dataIndex];
         //   }
         // },
-        color: 'white',
+        color:'#ffffff',
         anchor: 'end',
         align: 'start',
         font: {

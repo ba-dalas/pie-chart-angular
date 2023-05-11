@@ -2,6 +2,7 @@ export interface PieChartData {
   labels?: string[];
   data?:  number[];
   backgroundColor?: string[];
+  textColor?:string;
 
   // line chart
   // borderColor?: any;

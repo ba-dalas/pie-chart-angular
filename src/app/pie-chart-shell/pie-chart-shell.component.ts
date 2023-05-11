@@ -24,6 +24,7 @@ export class PieChartShellComponent implements OnInit {
         '#0d5ac1',
         '#f205e6'
       ],
+      textColor:'#ffffff'
 
     }
 
