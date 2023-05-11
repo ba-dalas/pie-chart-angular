@@ -9,10 +9,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class LineChartShellComponent  implements OnInit {
 
-  datasets:any=  {
+  datasets:PieChartData=  {
     data: [ 18, 54, 24, 5],
-    backgroundColor: '#95DEE3',
-    borderColor: '#95DEE3',
+    backgroundColor: [ '#95DEE3'],
+    // borderColor: '#95DEE3',
     labels: [ 'Feb-23', 'Mar-23', 'Apr-23', 'May-23' ]
 
   }
@@ -22,7 +22,7 @@ export class LineChartShellComponent  implements OnInit {
   lineChartDataSets$: Observable<PieChartData[]> = this.lineChartDataSubject.asObservable();
 
   ngOnInit(): void {
-    this.lineChartDataSubject.next(this.datasets);
+    this.lineChartDataSubject.next([this.datasets]);
   }
 
   viewChart(event:any){

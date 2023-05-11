@@ -3,13 +3,7 @@ export interface PieChartData {
   data?:  number[];
   backgroundColor?: string[];
   textColor?:string;
-
-  // line chart
-  // borderColor?: any;
-  // pointBackgroundColor?: any;
-  // pointBorderColor?: any;
-  // pointHoverBackgroundColor?: any;
-  // pointHoverBorderColor?: any;
+  borderColor?: string;
 
 }
 

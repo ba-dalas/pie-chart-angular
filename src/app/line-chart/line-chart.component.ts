@@ -4,6 +4,7 @@ import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts'
 import { default as Annotation } from 'chartjs-plugin-annotation';
 import { Location } from '@angular/common';
+import { PieChartData } from '../model/pie-chart.model';
 
 @Component({
   selector: 'app-line-chart',
@@ -13,11 +14,10 @@ import { Location } from '@angular/common';
 })
 export class LineChartComponent implements OnInit, OnChanges {
 
-  @Input() lineChartDataSets!:any ;
+  @Input() lineChartDataSets!: PieChartData[] | null;
 
   @Output() lineChartClicked = new EventEmitter<ChartEvent>();
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
-
 
 
   public lineChartData: ChartConfiguration['data'] = {
@@ -25,8 +25,8 @@ export class LineChartComponent implements OnInit, OnChanges {
       {
         data:[],
         // label: 'Series A',
-        backgroundColor: '',
-        borderColor: '',
+        backgroundColor: [],
+        borderColor: '#95DEE3',
         pointBackgroundColor: 'red',
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
@@ -44,19 +44,20 @@ export class LineChartComponent implements OnInit, OnChanges {
 
   }
 
-
   ngOnInit(): void {
 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.lineChartData.labels= this.lineChartDataSets.labels
-    this.lineChartData.datasets[0].data=this.lineChartDataSets.data
-    this.lineChartData.datasets[0].backgroundColor=this.lineChartDataSets.backgroundColor+'80'
-    this.lineChartData.datasets[0].borderColor=this.lineChartDataSets.borderColor+'80'
-    console.log('lineChartDataSets', this.lineChartDataSets)
-  }
 
+    if (this.lineChartDataSets && this.lineChartDataSets.length > 0){
+      this.lineChartData.labels= this.lineChartDataSets[0].labels
+      this.lineChartData.datasets[0].data = this.lineChartDataSets[0].data!;
+      this.lineChartData.datasets[0].backgroundColor=this.lineChartDataSets[0].backgroundColor+'80'
+      console.log('lineChartDataSets', this.lineChartDataSets)
+    }
+
+  }
 
 
   public lineChartOptions: ChartConfiguration['options'] = {
@@ -95,26 +96,6 @@ export class LineChartComponent implements OnInit, OnChanges {
     this.location.back();
   }
 
-
-
 }
 
 
-
-// public lineChartData: ChartConfiguration['data'] = {
-//   datasets: [
-//     {
-//       data: [ 18, 54, 24,5],
-//       // label: 'Series A',
-//       backgroundColor: '#95DEE3'+ '80',
-//       borderColor: '#95DEE3',
-//       pointBackgroundColor: 'red',
-//       pointBorderColor: '#fff',
-//       pointHoverBackgroundColor: '#fff',
-//       pointHoverBorderColor: 'rgba(148,159,177,0.8)',
-//       fill: 'origin',
-//     },
-
-//   ],
-//   labels: [ 'Feb-23', 'Mar-23', 'Apr-23', 'May-23' ]
-// };
