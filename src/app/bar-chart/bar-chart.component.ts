@@ -12,7 +12,7 @@ import { PieChartData } from '../model/pie-chart.model';
   styleUrls: ['./bar-chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BarChartComponent  implements OnInit, OnChanges{
+export class BarChartComponent implements OnInit, OnChanges {
 
   @Input() barChartDataSets!: PieChartData[] | null;
 
@@ -29,15 +29,20 @@ export class BarChartComponent  implements OnInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.barChartDataSets && this.barChartDataSets.length > 0 ) {
-      this.barChartData.labels= this.barChartDataSets[0].labels
+    if (this.barChartDataSets && this.barChartDataSets.length > 0) {
+      this.barChartData.labels = this.barChartDataSets[0].labels
       this.barChartData.datasets[0].data = this.barChartDataSets[0].data!;
-      this.barChartData.datasets[0].backgroundColor=this.barChartDataSets[0].backgroundColor
+      this.barChartData.datasets[0].backgroundColor = this.barChartDataSets[0].backgroundColor
 
-      // console.log('this.barChartDataSets.data labels=====', this.barChartDataSets[0].textColor)
-      // console.log('this.pieChartDataSets.data=====', this.barChartOptions?.plugins?.datalabels?.color);
-
+      if (
+        this.barChartOptions &&
+        this.barChartOptions.plugins &&
+        this.barChartOptions.plugins.datalabels
+      ) {
+        this.barChartOptions.plugins.datalabels.color = this.barChartDataSets[0].textColor;
+      }
     }
+
 
   }
 
@@ -58,7 +63,7 @@ export class BarChartComponent  implements OnInit, OnChanges{
       },
       // All style will be added here
       datalabels: {
-        color: 'white',
+        color: '',
         // color: 'white',
         anchor: 'center',
         align: 'center',
@@ -79,16 +84,16 @@ export class BarChartComponent  implements OnInit, OnChanges{
     labels: [],
     datasets: [
       {
-        data: [] ,
+        data: [],
         // label: 'Series A',
-        backgroundColor: [ ],
+        backgroundColor: [],
       },
 
     ],
   };
 
   // events
-  public chartClicked(event:any): void {
+  public chartClicked(event: any): void {
     console.log(event);
     this.barChartClicked.emit(event);
   }
@@ -97,7 +102,7 @@ export class BarChartComponent  implements OnInit, OnChanges{
     // console.log(event, active);
   }
 
-  goToBack(){
+  goToBack() {
     this.location.back();
   }
 
