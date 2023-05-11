@@ -1,39 +1,48 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
-import { ChartEvent, ChartType,  } from 'chart.js';
-import { ChartConfiguration, ChartData, } from 'chart.js';
+import { ChartEvent, ChartType } from 'chart.js';
+import { ChartConfiguration, ChartData } from 'chart.js';
 import { Location } from '@angular/common';
+import { PieChartData } from '../model/pie-chart.model';
 
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class PieChartComponent implements OnInit, OnChanges {
-
-  @Input() pieChartDataSets!:any ;
+  @Input() pieChartDataSets!: PieChartData[] | null;
 
   @Output() pieChartClicked = new EventEmitter<ChartEvent>();
 
   public pieChartType: ChartType = 'pie';
-  public pieChartPlugins = [ DatalabelsPlugin ];
+  public pieChartPlugins = [DatalabelsPlugin];
 
-  constructor(
-    private readonly location: Location
-  ) { }
+  constructor(private readonly location: Location) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.pieChartData.labels= this.pieChartDataSets.labels
-    this.pieChartData.datasets[0].data=this.pieChartDataSets.data
-    this.pieChartData.datasets[0].backgroundColor=this.pieChartDataSets.backgroundColor
-    console.log('this.pieChartDataSets.data=====', this.pieChartDataSets.data)
+
+    if (this.pieChartDataSets && this.pieChartDataSets.length > 0) {
+      this.pieChartData.labels = this.pieChartDataSets[0].labels;
+      this.pieChartData.datasets[0].data = this.pieChartDataSets[0].data!;
+      this.pieChartData.datasets[0].backgroundColor =
+        this.pieChartDataSets[0].backgroundColor;
+      // console.log('this.pieChartDataSets.data=====', this.pieChartDataSets);
+    }
+
   }
 
   public pieChartOptions: ChartConfiguration['options'] = {
@@ -56,52 +65,29 @@ export class PieChartComponent implements OnInit, OnChanges {
         color: 'white',
         anchor: 'end',
         align: 'start',
-         font: {
-              weight: 'bold'
-            },
+        font: {
+          weight: 'bold',
+        },
       },
-    }
-
+    },
   };
 
-  public pieChartData: ChartData<any> = {
+  public pieChartData: ChartData<'pie', number[], string | string[]> = {
     labels: [],
-    datasets: [ {
-      data:[],
-      backgroundColor: [],
-
-    } ],
-
+    datasets: [
+      {
+        data: [],
+        backgroundColor: [],
+      },
+    ],
   };
 
-  chartClicked(event:any){
+  chartClicked(event: any) {
     console.log(event);
     this.pieChartClicked.emit(event);
-
   }
 
-  goToBack(){
+  goToBack() {
     this.location.back();
   }
-
 }
-
-
-// public pieChartData: ChartData<any> = {
-//   labels: [ 'রাজশাহী' , 'রংপুর', 'ময়মনসিংহ' , 'ঢাকা','চট্টগ্রাম','সিলেট','খুলনা', 'বরিশাল' ],
-//   datasets: [ {
-//     data:[ 300, 500, 100 ,200,400,600,700, 900],
-//     backgroundColor: [
-//       '#63b598',
-//       '#ce7d78',
-//       '#ea9e70',
-//       '#a48a9e',
-//       '#c6e1e8',
-//       '#648177',
-//       '#0d5ac1',
-//       '#f205e6'
-//     ],
-
-//   } ],
-
-// };
