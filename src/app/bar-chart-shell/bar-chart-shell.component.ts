@@ -9,13 +9,14 @@ import { PieChartData } from '../model/pie-chart.model';
 })
 export class BarChartShellComponent implements OnInit {
 
-  datasets:any=  {
+  datasets:PieChartData=  {
     labels:[ 'Disposed' , 'In-Process' ],
     data:[ 10300, 15000],
     backgroundColor: [
       '#63b598',
       '#ce7d78',
     ],
+    textColor:'#ffffff'
   }
 
   private barChartDataSubject = new BehaviorSubject<PieChartData[]>([]);
@@ -23,7 +24,7 @@ export class BarChartShellComponent implements OnInit {
   barChartDataSets$: Observable<PieChartData[]> = this.barChartDataSubject.asObservable();
 
   ngOnInit(): void {
-    this.barChartDataSubject.next(this.datasets);
+    this.barChartDataSubject.next([this.datasets]);
   }
 
   viewChart(event:any){

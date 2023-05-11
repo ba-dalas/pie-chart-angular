@@ -3,6 +3,7 @@ import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { Location } from '@angular/common';
+import { PieChartData } from '../model/pie-chart.model';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { Location } from '@angular/common';
 })
 export class BarChartComponent  implements OnInit, OnChanges{
 
-  @Input() barChartDataSets!:any ;
+  @Input() barChartDataSets!: PieChartData[] | null;
 
   @Output() barChartClicked = new EventEmitter<ChartEvent>();
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
@@ -28,10 +29,18 @@ export class BarChartComponent  implements OnInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.barChartData.labels= this.barChartDataSets.labels
-    this.barChartData.datasets[0].data=this.barChartDataSets.data
-    this.barChartData.datasets[0].backgroundColor=this.barChartDataSets.backgroundColor
-    console.log('this.barChartDataSets.data labels=====', this.barChartDataSets.labels)
+    if (this.barChartDataSets && this.barChartDataSets.length > 0 ) {
+      this.barChartData.labels= this.barChartDataSets[0].labels
+      this.barChartData.datasets[0].data = this.barChartDataSets[0].data!;
+      this.barChartData.datasets[0].backgroundColor=this.barChartDataSets[0].backgroundColor
+
+
+
+      // console.log('this.barChartDataSets.data labels=====', this.barChartDataSets[0].textColor)
+      // console.log('this.pieChartDataSets.data=====', this.barChartOptions?.plugins?.datalabels?.color);
+
+    }
+
   }
 
   public barChartOptions: ChartConfiguration['options'] = {
@@ -52,6 +61,7 @@ export class BarChartComponent  implements OnInit, OnChanges{
       // All style will be added here
       datalabels: {
         color: 'white',
+        // color: 'white',
         anchor: 'center',
         align: 'center',
         font: {
@@ -67,11 +77,11 @@ export class BarChartComponent  implements OnInit, OnChanges{
   ];
 
 
-  public barChartData: ChartData<'bar'> = {
+  public barChartData: ChartData<'bar', number[], string | string[]> = {
     labels: [],
     datasets: [
       {
-        data: [],
+        data: [] ,
         // label: 'Series A',
         backgroundColor: [ ],
       },
