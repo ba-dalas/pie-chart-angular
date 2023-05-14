@@ -129,7 +129,7 @@ export class PieChartComponent implements OnInit, OnChanges {
   }
 
   changeBorderColor(event:any){
-    // this.lineChartData.datasets[2].borderColor = 'green';
+
     if(event.value==='white' ){
       this.pieChartData.datasets[0].borderColor = 'white'
     }

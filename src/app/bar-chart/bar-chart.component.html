@@ -5,34 +5,33 @@
 <div class="flex ">
   <div class="flex-none w-[20%] ">
     <div class="pl-4 flex flex-col">
-      <p class="text-base">Label  </p>
+
+      <p class="text-base">Background Color </p>
       <mat-form-field appearance="outline">
-        <mat-select formControlName="label">
-          <mat-option value="corporate">Top</mat-option>
-          <mat-option value="joint">Bottom</mat-option>
-          <mat-option value="single">Left</mat-option>
-          <mat-option value="single">Right</mat-option>
+        <mat-select (selectionChange)="changeBackgroundColor($any($event))">
+          <mat-option value="seaGreen">SeaGreen Red</mat-option>
+          <mat-option value="green">Green Brick</mat-option>
+          <mat-option value="violet">Violet Purple</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <p class="text-base">Border Color </p>
+      <p class="text-base">Text Color </p>
       <mat-form-field appearance="outline">
-        <mat-select formControlName="borderColor">
-          <mat-option value="corporate">No Color</mat-option>
-          <mat-option value="corporate">Pink</mat-option>
-          <mat-option value="joint">Red</mat-option>
-          <mat-option value="single">Green</mat-option>
+        <mat-select (selectionChange)="changeTextColor($any($event))">
+          <mat-option value="white">White</mat-option>
+          <mat-option value="black">Black</mat-option>
+          <mat-option value="green">Green</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <p class="text-base">Text Color</p>
+      <p class="text-base">Grid Line </p>
       <mat-form-field appearance="outline">
-        <mat-select formControlName="textColor">
-          <mat-option value="corporate">White</mat-option>
-          <mat-option value="joint">Red</mat-option>
-          <mat-option value="single">Green</mat-option>
+        <mat-select (selectionChange)="changeGridLine($any($event))">
+          <mat-option value="show">Show</mat-option>
+          <mat-option value="black">Hide</mat-option>
         </mat-select>
       </mat-form-field>
+
 
     </div>
   </div>

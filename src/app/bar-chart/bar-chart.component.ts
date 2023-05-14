@@ -51,9 +51,16 @@ export class BarChartComponent implements OnInit, OnChanges {
     maintainAspectRatio: false,
     // We use these empty structures as placeholders for dynamic theming.
     scales: {
-      x: {},
+      x: {
+        grid: {
+          display: true,
+        },
+      },
       y: {
-        min: 10
+        min: 10,
+        grid: {
+          display: true,
+        },
       }
     },
     plugins: {
@@ -104,6 +111,54 @@ export class BarChartComponent implements OnInit, OnChanges {
 
   goToBack() {
     this.location.back();
+  }
+
+  changeBackgroundColor(event:any){
+
+    if(event.value==='seaGreen'  ){
+      this.barChartData.datasets[0].backgroundColor =  [ '#63b598','#ce7d78' ]
+    }
+
+    if(event.value==='green'  ){
+      this.barChartData.datasets[0].backgroundColor =  [ '#008000','#B22222' ]
+    }
+
+    if(event.value==='violet'  ){
+      this.barChartData.datasets[0].backgroundColor =  [ '#C71585','#800080', ]
+    }
+
+    this.chart?.render();
+  }
+
+  changeTextColor(event:any){
+
+    if(event.value==='white' && this.barChartOptions?.plugins?.datalabels ){
+      this.barChartOptions.plugins.datalabels.color = '#ffffff'
+    }
+
+    if(event.value==='black' && this.barChartOptions?.plugins?.datalabels ){
+      this.barChartOptions.plugins.datalabels.color= '#000000'
+    }
+
+    if(event.value==='green' && this.barChartOptions?.plugins?.datalabels ){
+       this.barChartOptions.plugins.datalabels.color = '#04F404'
+    }
+
+    this.chart?.render();
+  }
+
+  changeGridLine(event:any){
+    // scales: {
+    //   x: {
+    //     grid: {
+    //       display: true,
+    //     },
+    //   },
+    // if( this.barChartOptions?.scales ){
+    //   this.barChartOptions.scales=true ;
+    // }
+
+    this.chart?.render();
   }
 
 }
