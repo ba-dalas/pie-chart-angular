@@ -18,20 +18,19 @@
 
       <p class="text-base">Border Color</p>
       <mat-form-field appearance="outline">
-        <mat-select formControlName="borderColor">
-          <mat-option value="corporate">No Color</mat-option>
-          <mat-option value="corporate">Pink</mat-option>
-          <mat-option value="joint">Red</mat-option>
-          <mat-option value="single">Green</mat-option>
+        <mat-select (selectionChange)="changeBorderColor($any($event))" >
+          <mat-option value="white">White</mat-option>
+          <mat-option value="black">Black</mat-option>
+          <mat-option value="green">Green</mat-option>
         </mat-select>
       </mat-form-field>
 
       <p class="text-base">Text Color </p>
       <mat-form-field appearance="outline">
-        <mat-select formControlName="textColor">
-          <mat-option value="corporate">White</mat-option>
-          <mat-option value="joint">Red</mat-option>
-          <mat-option value="single">Green</mat-option>
+        <mat-select (selectionChange)="changeTextColor($any($event))">
+          <mat-option value="white">White</mat-option>
+          <mat-option value="black">Black</mat-option>
+          <mat-option value="green">Green</mat-option>
         </mat-select>
       </mat-form-field>
 

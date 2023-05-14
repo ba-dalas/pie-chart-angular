@@ -83,6 +83,7 @@ export class PieChartComponent implements OnInit, OnChanges {
         font: {
           weight: 'bold',
         },
+
       },
     },
   };
@@ -93,6 +94,7 @@ export class PieChartComponent implements OnInit, OnChanges {
       {
         data: [],
         backgroundColor: [],
+        borderColor: 'white',
       },
     ],
   };
@@ -124,6 +126,40 @@ export class PieChartComponent implements OnInit, OnChanges {
     }
 
     this.chart?.render();
-
   }
+
+  changeBorderColor(event:any){
+    // this.lineChartData.datasets[2].borderColor = 'green';
+    if(event.value==='white' ){
+      this.pieChartData.datasets[0].borderColor = 'white'
+    }
+
+    if(event.value==='black' ){
+      this.pieChartData.datasets[0].borderColor = 'black'
+    }
+
+    if(event.value==='green' ){
+      this.pieChartData.datasets[0].borderColor = 'green'
+    }
+
+    this.chart?.render();
+  }
+
+  changeTextColor(event:any){
+    // this.lineChartData.datasets[2].borderColor = 'green';
+    if(event.value==='white' && this.pieChartOptions?.plugins?.datalabels ){
+      this.pieChartOptions.plugins.datalabels.color = 'white'
+    }
+
+    if(event.value==='black' && this.pieChartOptions?.plugins?.datalabels ){
+      this.pieChartOptions.plugins.datalabels.color= '#000000'
+    }
+
+    if(event.value==='green' && this.pieChartOptions?.plugins?.datalabels ){
+      this.pieChartOptions.plugins.datalabels.color = 'green'
+    }
+
+    this.chart?.render();
+  }
+
 }
