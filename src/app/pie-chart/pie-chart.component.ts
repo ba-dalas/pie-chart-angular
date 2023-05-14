@@ -108,7 +108,7 @@ export class PieChartComponent implements OnInit, OnChanges {
     this.location.back();
   }
 
-  onLabelChange(event:any){
+  changeLabel(event:any){
     console.log(event.value)
     if(event.value==='left' && this.pieChartOptions?.plugins?.legend ){
       this.pieChartOptions.plugins.legend.position='left';
@@ -146,7 +146,7 @@ export class PieChartComponent implements OnInit, OnChanges {
   }
 
   changeTextColor(event:any){
-    // this.lineChartData.datasets[2].borderColor = 'green';
+
     if(event.value==='white' && this.pieChartOptions?.plugins?.datalabels ){
       this.pieChartOptions.plugins.datalabels.color = '#ffffff'
     }
