@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { Location } from '@angular/common';
 import { ChartDataSet } from '../model/chart';
+import { BaseChartDirective } from 'ng2-charts';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class MultiAxisLineChartComponent implements OnInit, OnChanges {
   @Input() multiAxisLineChartDataSets!: ChartDataSet | null;
 
   @Output() lineChartClicked = new EventEmitter<ChartEvent>();
+  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
 
   constructor(private readonly location: Location) {
@@ -111,6 +113,76 @@ export class MultiAxisLineChartComponent implements OnInit, OnChanges {
 
   goToBack(){
     this.location.back();
+  }
+
+  changeBorderColor(event:any){
+
+    if(event.value==='green' ){
+      this.lineChartData.datasets[0].borderColor = '#95DEE3'
+      this.lineChartData.datasets[1].borderColor = '#228B22'
+    }
+
+    if(event.value==='blue' ){
+      this.lineChartData.datasets[0].borderColor = '#483D8B'
+      this.lineChartData.datasets[1].borderColor = '#FF69B4'
+    }
+
+    if(event.value==='green' ){
+      this.lineChartData.datasets[0].borderColor = '#228B22'
+    }
+
+    this.chart?.render();
+  }
+
+  changeBackgroundColor(event:any){
+
+    if(event.value==='sky' ){
+      this.lineChartData.datasets[0].backgroundColor = '#95DEE3' + '80';
+      this.lineChartData.datasets[0].backgroundColor = '#228B22' + '80';
+    }
+
+    if(event.value==='green' ){
+      this.lineChartData.datasets[0].backgroundColor = '#228B22' + '80';
+    }
+
+    if(event.value==='violet' ){
+      this.lineChartData.datasets[0].backgroundColor = ' #8A2BE2' + '80';
+    }
+
+    this.chart?.render();
+  }
+
+  changePointerColor(event:any){
+
+    // if(event.value==='violet' && this.lineChartData.datasets){
+
+    //   // this.lineChartData.datasets?.pointBackgroundColor
+    //   // this.changePointerColor.lineChartData.data.datasets[0].pointBackgroundColor[i] = 'blue';
+    // }
+
+
+
+    // if(event.value==='sky' && this.lineChartData.datasets ){
+    //   this.lineChartData.datasets[0].hoverBackgroundColor
+    // }
+
+
+
+    this.chart?.render();
+  }
+
+  changeGridLine(event:any){
+    // scales: {
+    //   x: {
+    //     grid: {
+    //       display: true,
+    //     },
+    //   },
+    // if( this.barChartOptions?.scales ){
+    //   this.barChartOptions.scales=true ;
+    // }
+
+    this.chart?.render();
   }
 
 }
