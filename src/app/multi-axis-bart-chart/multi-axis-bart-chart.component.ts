@@ -4,6 +4,7 @@ import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { Location } from '@angular/common';
 import { ChartDataSet } from '../model/chart';
+import { BaseChartDirective } from 'ng2-charts';
 
 
 
@@ -20,6 +21,7 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
   @Input() barChartDataSets!: ChartDataSet | null;
 
   @Output() barChartClicked = new EventEmitter<ChartEvent>();
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   constructor(private readonly location: Location) {
 
@@ -143,6 +145,57 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
 
   goToBack(){
     this.location.back();
+  }
+
+  changeBackgroundColor(event:any){
+
+    if(event.value==='blue'  ){
+      this.barChartData.datasets[0].backgroundColor =  [ '#544BE9','#6AD880' ]
+    }
+
+    if(event.value==='coral'  ){
+      this.barChartData.datasets[0].backgroundColor =  ['#DB7093' , '#DB7093' ]
+    }
+
+    if(event.value==='orange'  ){
+      this.barChartData.datasets[0].backgroundColor =  [ '#F4A460' , '#FFB6C1' ]
+    }
+
+
+    this.chart?.render();
+  }
+
+  changeTextColor(event:any){
+
+    if(event.value==='white' && this.barChartOptions?.plugins?.datalabels ){
+      this.barChartOptions.plugins.datalabels.color = '#ffffff'
+    }
+
+    if(event.value==='black' && this.barChartOptions?.plugins?.datalabels ){
+      this.barChartOptions.plugins.datalabels.color = '#000000'
+    }
+
+    if(event.value==='green' && this.barChartOptions?.plugins?.datalabels ){
+      this.barChartOptions.plugins.datalabels.color = '#2E8B57'
+    }
+
+
+
+    this.chart?.render();
+  }
+
+  changeGridLine(event:any){
+    // scales: {
+    //   x: {
+    //     grid: {
+    //       display: true,
+    //     },
+    //   },
+    // if( this.barChartOptions?.scales ){
+    //   this.barChartOptions.scales=true ;
+    // }
+
+    this.chart?.render();
   }
 
   }
