@@ -6,7 +6,6 @@ export interface ChartDataSet {
   textColor?:string;
   borderColor?: string;
 
-
 }
 
 

@@ -7,6 +7,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
@@ -14,6 +15,7 @@ import { ChartEvent, ChartType } from 'chart.js';
 import { ChartConfiguration, ChartData } from 'chart.js';
 import { Location } from '@angular/common';
 import { ChartDataSet } from '../model/chart';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'app-pie-chart',
@@ -26,15 +28,18 @@ export class PieChartComponent implements OnInit, OnChanges {
   @Input() pieChartDataSets!: ChartDataSet | null;
 
   @Output() pieChartClicked = new EventEmitter<ChartEvent>();
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [DatalabelsPlugin];
+
 
   constructor(private readonly location: Location) {}
 
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
+
     if (
       this.pieChartDataSets &&
       this.pieChartDataSets.value
@@ -50,6 +55,7 @@ export class PieChartComponent implements OnInit, OnChanges {
         this.pieChartOptions.plugins.datalabels
       ) {
         this.pieChartOptions.plugins.datalabels.color = this.pieChartDataSets.textColor;
+
       }
     }
   }
@@ -98,5 +104,26 @@ export class PieChartComponent implements OnInit, OnChanges {
 
   goToBack() {
     this.location.back();
+  }
+
+  onLabelChange(event:any){
+    console.log(event.value)
+    if(event.value==='left' && this.pieChartOptions?.plugins?.legend ){
+      this.pieChartOptions.plugins.legend.position='left';
+    }
+    if(event.value==='right' && this.pieChartOptions?.plugins?.legend ){
+      this.pieChartOptions.plugins.legend.position='right';
+    }
+
+    if(event.value==='top' && this.pieChartOptions?.plugins?.legend ){
+      this.pieChartOptions.plugins.legend.position='top';
+    }
+
+    if(event.value==='bottom' && this.pieChartOptions?.plugins?.legend ){
+      this.pieChartOptions.plugins.legend.position='bottom';
+    }
+
+    this.chart?.render();
+
   }
 }

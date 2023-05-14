@@ -5,14 +5,15 @@
 <div class="flex ">
   <div class="flex-none w-[20%] ">
     <div class="pl-4 flex flex-col">
-      <p class="text-base">Label </p>
+      <p class="text-base">Label Position </p>
       <mat-form-field appearance="outline">
-        <mat-select formControlName="label">
-          <mat-option value="corporate">Top</mat-option>
-          <mat-option value="joint">Bottom</mat-option>
-          <mat-option value="single">Left</mat-option>
-          <mat-option value="single">Right</mat-option>
+        <mat-select (selectionChange)="onLabelChange($any($event))">
+          <mat-option value="top">Top</mat-option>
+          <mat-option value="bottom">Bottom</mat-option>
+          <mat-option value="left">Left</mat-option>
+          <mat-option value="right">Right</mat-option>
         </mat-select>
+
       </mat-form-field>
 
       <p class="text-base">Border Color</p>
