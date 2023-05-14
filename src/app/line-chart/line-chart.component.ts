@@ -59,6 +59,7 @@ export class LineChartComponent implements OnInit, OnChanges {
         this.lineChartDataSets.backgroundColor + '80';
       console.log('lineChartDataSets', this.lineChartDataSets);
     }
+
   }
 
   public lineChartOptions: ChartConfiguration['options'] = {
@@ -92,5 +93,72 @@ export class LineChartComponent implements OnInit, OnChanges {
 
   goToBack() {
     this.location.back();
+  }
+
+  changeBorderColor(event:any){
+
+    if(event.value==='cyan' ){
+      this.lineChartData.datasets[0].borderColor = '#95DEE3'
+    }
+
+    if(event.value==='blue' ){
+      this.lineChartData.datasets[0].borderColor = '#483D8B'
+    }
+
+    if(event.value==='green' ){
+      this.lineChartData.datasets[0].borderColor = '#228B22'
+    }
+
+    this.chart?.render();
+  }
+
+  changeBackgroundColor(event:any){
+
+    if(event.value==='sky' ){
+      this.lineChartData.datasets[0].backgroundColor = '#95DEE3' + '80';
+    }
+
+    if(event.value==='green' ){
+      this.lineChartData.datasets[0].backgroundColor = '#228B22' + '80';
+    }
+
+    if(event.value==='violet' ){
+      this.lineChartData.datasets[0].backgroundColor = ' #8A2BE2' + '80';
+    }
+
+    this.chart?.render();
+  }
+
+  changePointerColor(event:any){
+
+    // if(event.value==='violet' && this.lineChartData.datasets){
+
+    //   // this.lineChartData.datasets?.pointBackgroundColor
+    //   // this.changePointerColor.lineChartData.data.datasets[0].pointBackgroundColor[i] = 'blue';
+    // }
+
+
+
+    // if(event.value==='sky' && this.lineChartData.datasets ){
+    //   this.lineChartData.datasets[0].hoverBackgroundColor
+    // }
+
+
+
+    this.chart?.render();
+  }
+
+  changeGridLine(event:any){
+    // scales: {
+    //   x: {
+    //     grid: {
+    //       display: true,
+    //     },
+    //   },
+    // if( this.barChartOptions?.scales ){
+    //   this.barChartOptions.scales=true ;
+    // }
+
+    this.chart?.render();
   }
 }

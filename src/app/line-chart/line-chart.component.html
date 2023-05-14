@@ -1,13 +1,49 @@
 <div class="flex justify-end">
-  <button  (click)="goToBack()" mat-button>Back</button>
+  <button (click)="goToBack()" mat-button>Back</button>
 </div>
 
-<canvas
-  baseChart
-  class="chart"
-  [data]="lineChartData"
-  [options]="lineChartOptions"
-  [type]="lineChartType"
-  (chartClick)="chartClicked($event)"
->
-</canvas>
+<div class="flex">
+  <div class="flex-none w-[20%]">
+    <div class="pl-4 flex flex-col">
+      <p class="text-base">Border Color</p>
+      <mat-form-field appearance="outline">
+        <mat-select (selectionChange)="changeBorderColor($any($event))" >
+          <mat-option value="cyan">Cyan</mat-option>
+          <mat-option value="blue">Blue</mat-option>
+          <mat-option value="green">Green</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <p class="text-base">Background Color</p>
+      <mat-form-field appearance="outline">
+        <mat-select (selectionChange)="changeBackgroundColor($any($event))">
+          <mat-option value="sky">Sky</mat-option>
+          <mat-option value="green">Green </mat-option>
+          <mat-option value="violet">Violet </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <p class="text-base">Pointer Color</p>
+      <mat-form-field appearance="outline">
+        <mat-select (selectionChange)="changePointerColor($any($event))">
+          <mat-option value="white">White</mat-option>
+          <mat-option value="black">Black</mat-option>
+          <mat-option value="green">Green</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+    </div>
+  </div>
+  <div class="ml-6 grow">
+    <canvas
+      baseChart
+      class="chart"
+      [data]="lineChartData"
+      [options]="lineChartOptions"
+      [type]="lineChartType"
+      (chartClick)="chartClicked($event)"
+    >
+    </canvas>
+  </div>
+</div>
