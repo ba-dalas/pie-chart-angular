@@ -117,39 +117,39 @@ export class MultiAxisLineChartComponent implements OnInit, OnChanges {
 
   changeBorderColor(event:any){
 
-    if(event.value==='green' ){
-      this.lineChartData.datasets[0].borderColor = '#95DEE3'
-      this.lineChartData.datasets[1].borderColor = '#228B22'
-    }
+    // if(event.value==='green' ){
+    //   this.lineChartData.datasets[0].borderColor = '#95DEE3'
+    //   this.lineChartData.datasets[1].borderColor = '#228B22'
+    // }
 
-    if(event.value==='blue' ){
-      this.lineChartData.datasets[0].borderColor = '#483D8B'
-      this.lineChartData.datasets[1].borderColor = '#FF69B4'
-    }
+    // if(event.value==='blue' ){
+    //   this.lineChartData.datasets[0].borderColor = '#483D8B'
+    //   this.lineChartData.datasets[1].borderColor = '#FF69B4'
+    // }
 
-    if(event.value==='green' ){
-      this.lineChartData.datasets[0].borderColor = '#228B22'
-    }
+    // if(event.value==='green' ){
+    //   this.lineChartData.datasets[0].borderColor = '#228B22'
+    // }
 
-    this.chart?.render();
+    // this.chart?.render();
   }
 
   changeBackgroundColor(event:any){
 
-    if(event.value==='sky' ){
-      this.lineChartData.datasets[0].backgroundColor = '#95DEE3' + '80';
-      this.lineChartData.datasets[0].backgroundColor = '#228B22' + '80';
-    }
+    // if(event.value==='sky' ){
+    //   this.lineChartData.datasets[0].backgroundColor = '#95DEE3' + '80';
+    //   this.lineChartData.datasets[0].backgroundColor = '#228B22' + '80';
+    // }
 
-    if(event.value==='green' ){
-      this.lineChartData.datasets[0].backgroundColor = '#228B22' + '80';
-    }
+    // if(event.value==='green' ){
+    //   this.lineChartData.datasets[0].backgroundColor = '#228B22' + '80';
+    // }
 
-    if(event.value==='violet' ){
-      this.lineChartData.datasets[0].backgroundColor = ' #8A2BE2' + '80';
-    }
+    // if(event.value==='violet' ){
+    //   this.lineChartData.datasets[0].backgroundColor = ' #8A2BE2' + '80';
+    // }
 
-    this.chart?.render();
+    // this.chart?.render();
   }
 
   changePointerColor(event:any){
@@ -168,7 +168,7 @@ export class MultiAxisLineChartComponent implements OnInit, OnChanges {
 
 
 
-    this.chart?.render();
+    // this.chart?.render();
   }
 
   changeGridLine(event:any){
