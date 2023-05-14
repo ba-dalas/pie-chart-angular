@@ -150,15 +150,18 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
   changeBackgroundColor(event:any){
 
     if(event.value==='blue'  ){
-      this.barChartData.datasets[0].backgroundColor =  [ '#544BE9','#6AD880' ]
+      this.barChartData.datasets[0].backgroundColor='#544BE9'
+      this.barChartData.datasets[1].backgroundColor='#6AD880'
     }
 
     if(event.value==='coral'  ){
-      this.barChartData.datasets[0].backgroundColor =  ['#DB7093' , '#DB7093' ]
+      this.barChartData.datasets[0].backgroundColor='#DB7093'
+      this.barChartData.datasets[1].backgroundColor='#ADFF2F'
     }
 
     if(event.value==='orange'  ){
-      this.barChartData.datasets[0].backgroundColor =  [ '#F4A460' , '#FFB6C1' ]
+      this.barChartData.datasets[0].backgroundColor='#708090'
+      this.barChartData.datasets[1].backgroundColor='#6B8E23'
     }
 
 

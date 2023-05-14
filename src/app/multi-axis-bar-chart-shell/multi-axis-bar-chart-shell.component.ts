@@ -18,7 +18,7 @@ export class MultiAxisBarChartShellComponent implements OnInit {
       '#6AD880',
 
     ],
-    textColor:'#000000'
+    textColor:'#ffffff'
 
   }
 
