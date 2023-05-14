@@ -148,7 +148,7 @@ export class PieChartComponent implements OnInit, OnChanges {
   changeTextColor(event:any){
     // this.lineChartData.datasets[2].borderColor = 'green';
     if(event.value==='white' && this.pieChartOptions?.plugins?.datalabels ){
-      this.pieChartOptions.plugins.datalabels.color = 'white'
+      this.pieChartOptions.plugins.datalabels.color = '#ffffff'
     }
 
     if(event.value==='black' && this.pieChartOptions?.plugins?.datalabels ){
@@ -156,7 +156,7 @@ export class PieChartComponent implements OnInit, OnChanges {
     }
 
     if(event.value==='green' && this.pieChartOptions?.plugins?.datalabels ){
-      this.pieChartOptions.plugins.datalabels.color = 'green'
+      this.pieChartOptions.plugins.datalabels.color = '#04F404'
     }
 
     this.chart?.render();
