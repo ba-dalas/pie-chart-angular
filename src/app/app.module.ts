@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from './home/home.component';
 import {MatSelectModule} from '@angular/material/select';
+import { HighlightDirectiveComponent } from './highlight-directive/highlight-directive.component';
+import { HighlightDirective } from './hover.directive';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import {MatSelectModule} from '@angular/material/select';
     MultiAxisLineChartShellComponent,
     MultiAxisBarChartShellComponent,
     HomeComponent,
+    HighlightDirectiveComponent,
+    HighlightDirective
 
   ],
   imports: [

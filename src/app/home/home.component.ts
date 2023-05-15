@@ -29,4 +29,8 @@ export class HomeComponent {
   goToMultiAxisLineChartPage(){
     this.router.navigate(['/multi-axis-line-chart']);
   }
+
+  goToDirectivePage(){
+    this.router.navigate(['/directive']);
+  }
 }

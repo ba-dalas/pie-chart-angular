@@ -6,6 +6,7 @@ import { MultiAxisBarChartShellComponent } from './multi-axis-bar-chart-shell/mu
 import { LineChartShellComponent } from './line-chart-shell/line-chart-shell.component';
 import { HomeComponent } from './home/home.component';
 import { MultiAxisLineChartShellComponent } from './multi-axis-line-chart-shell/multi-axis-line-chart-shell.component';
+import { HighlightDirectiveComponent } from './highlight-directive/highlight-directive.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
     {
       path: 'multi-axis-line-chart',
       component: MultiAxisLineChartShellComponent,
+    },
+    {
+      path: 'directive',
+      component: HighlightDirectiveComponent,
     },
 ];
 
