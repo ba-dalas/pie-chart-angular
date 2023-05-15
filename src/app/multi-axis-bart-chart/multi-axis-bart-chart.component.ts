@@ -147,6 +147,45 @@ export class MultiAxisBartChartComponent implements OnInit, OnChanges{
     this.location.back();
   }
 
+  changeLegend(event:any){
+    console.log(event.value)
+    if(event.value==='left' && this.barChartOptions?.plugins?.legend ){
+      this.barChartOptions.plugins.legend.position='left';
+    }
+    if(event.value==='right' && this.barChartOptions?.plugins?.legend ){
+      this.barChartOptions.plugins.legend.position='right';
+    }
+
+    if(event.value==='top' && this.barChartOptions?.plugins?.legend ){
+      this.barChartOptions.plugins.legend.position='top';
+    }
+
+    if(event.value==='bottom' && this.barChartOptions?.plugins?.legend ){
+      this.barChartOptions.plugins.legend.position='bottom';
+    }
+
+    this.chart?.render();
+  }
+
+  changeLabelPosition(event:any){
+    console.log(event.value)
+    if(event.value==='outside' &&  this.barChartOptions?.plugins?.datalabels ){
+      this.barChartOptions.plugins.datalabels.anchor = 'end'
+      this.barChartOptions.plugins.datalabels.align = 'end'
+    }
+    if(event.value==='start' &&  this.barChartOptions?.plugins?.datalabels ){
+      this.barChartOptions.plugins.datalabels.anchor = 'end'
+      this.barChartOptions.plugins.datalabels.align = 'start'
+    }
+    if(event.value==='center' && this.barChartOptions?.plugins?.datalabels ){
+      this.barChartOptions.plugins.datalabels.anchor = 'center'
+      this.barChartOptions.plugins.datalabels.align = 'center'
+    }
+
+
+    this.chart?.render();
+  }
+
   changeBackgroundColor(event:any){
 
     if(event.value==='blue'  ){
