@@ -108,7 +108,7 @@ export class PieChartComponent implements OnInit, OnChanges {
     this.location.back();
   }
 
-  changeLabel(event:any){
+  changeLegend(event:any){
     console.log(event.value)
     if(event.value==='left' && this.pieChartOptions?.plugins?.legend ){
       this.pieChartOptions.plugins.legend.position='left';
@@ -128,7 +128,7 @@ export class PieChartComponent implements OnInit, OnChanges {
     this.chart?.render();
   }
 
-  changeValuePosition(event:any){
+  changeLabelPosition(event:any){
     console.log(event.value)
     if(event.value==='outside' &&  this.pieChartOptions?.plugins?.datalabels ){
       this.pieChartOptions.plugins.datalabels.anchor = 'end'

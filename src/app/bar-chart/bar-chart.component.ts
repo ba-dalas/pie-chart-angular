@@ -113,6 +113,25 @@ export class BarChartComponent implements OnInit, OnChanges {
     this.location.back();
   }
 
+  changeLabelPosition(event:any){
+    console.log(event.value)
+    if(event.value==='outside' &&  this.barChartOptions?.plugins?.datalabels ){
+      this.barChartOptions.plugins.datalabels.anchor = 'end'
+      this.barChartOptions.plugins.datalabels.align = 'end'
+    }
+    if(event.value==='start' &&  this.barChartOptions?.plugins?.datalabels ){
+      this.barChartOptions.plugins.datalabels.anchor = 'end'
+      this.barChartOptions.plugins.datalabels.align = 'start'
+    }
+    if(event.value==='center' && this.barChartOptions?.plugins?.datalabels ){
+      this.barChartOptions.plugins.datalabels.anchor = 'center'
+      this.barChartOptions.plugins.datalabels.align = 'center'
+    }
+
+
+    this.chart?.render();
+  }
+
   changeBackgroundColor(event:any){
 
     if(event.value==='seaGreen'  ){

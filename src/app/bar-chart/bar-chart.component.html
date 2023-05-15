@@ -6,6 +6,17 @@
   <div class="flex-none w-[20%] ">
     <div class="pl-4 flex flex-col">
 
+      <p class="text-base">Label Position </p>
+      <mat-form-field appearance="outline">
+        <mat-select (selectionChange)="changeLabelPosition($any($event))">
+          <mat-option value="outside">Outside</mat-option>
+          <mat-option value="start">Start</mat-option>
+          <mat-option value="center">Center</mat-option>
+
+        </mat-select>
+
+      </mat-form-field>
+
       <p class="text-base">Background Color </p>
       <mat-form-field appearance="outline">
         <mat-select (selectionChange)="changeBackgroundColor($any($event))">
@@ -23,15 +34,6 @@
           <mat-option value="green">Green</mat-option>
         </mat-select>
       </mat-form-field>
-
-      <!-- <p class="text-base">Grid Line </p>
-      <mat-form-field appearance="outline">
-        <mat-select (selectionChange)="changeGridLine($any($event))">
-          <mat-option value="show">Show</mat-option>
-          <mat-option value="black">Hide</mat-option>
-        </mat-select>
-      </mat-form-field> -->
-
 
     </div>
   </div>

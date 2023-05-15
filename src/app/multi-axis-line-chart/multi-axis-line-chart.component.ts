@@ -115,74 +115,66 @@ export class MultiAxisLineChartComponent implements OnInit, OnChanges {
     this.location.back();
   }
 
+  changeLegend(event:any){
+    console.log(event.value)
+    if(event.value==='left' && this.lineChartOptions?.plugins?.legend ){
+      this.lineChartOptions.plugins.legend.position='left';
+    }
+    if(event.value==='right' && this.lineChartOptions?.plugins?.legend ){
+      this.lineChartOptions.plugins.legend.position='right';
+    }
+
+    if(event.value==='top' && this.lineChartOptions?.plugins?.legend ){
+      this.lineChartOptions.plugins.legend.position='top';
+    }
+
+    if(event.value==='bottom' && this.lineChartOptions?.plugins?.legend ){
+      this.lineChartOptions.plugins.legend.position='bottom';
+    }
+
+    this.chart?.render();
+  }
+
   changeBorderColor(event:any){
 
-    // if(event.value==='green' ){
-    //   this.lineChartData.datasets[0].borderColor = '#95DEE3'
-    //   this.lineChartData.datasets[1].borderColor = '#228B22'
-    // }
+    if(event.value==='green' ){
+      this.lineChartData.datasets[0].borderColor = '#95DEE3'
+      this.lineChartData.datasets[1].borderColor = '#228B22'
+    }
 
-    // if(event.value==='blue' ){
-    //   this.lineChartData.datasets[0].borderColor = '#483D8B'
-    //   this.lineChartData.datasets[1].borderColor = '#FF69B4'
-    // }
+    if(event.value==='blue' ){
+      this.lineChartData.datasets[0].borderColor = '#483D8B'
+      this.lineChartData.datasets[1].borderColor = '#95DEE3'
+    }
 
-    // if(event.value==='green' ){
-    //   this.lineChartData.datasets[0].borderColor = '#228B22'
-    // }
+    if(event.value==='red' ){
+      this.lineChartData.datasets[0].borderColor = '#DC143C'
+      this.lineChartData.datasets[1].borderColor = '#00CED1'
+    }
 
-    // this.chart?.render();
+    this.chart?.render();
   }
 
   changeBackgroundColor(event:any){
 
-    // if(event.value==='sky' ){
-    //   this.lineChartData.datasets[0].backgroundColor = '#95DEE3' + '80';
-    //   this.lineChartData.datasets[0].backgroundColor = '#228B22' + '80';
-    // }
+    if(event.value==='sky' ){
+      this.lineChartData.datasets[0].backgroundColor = '#95DEE3' + '80';
+      this.lineChartData.datasets[1].backgroundColor = '#228B22' + '80';
+    }
 
-    // if(event.value==='green' ){
-    //   this.lineChartData.datasets[0].backgroundColor = '#228B22' + '80';
-    // }
+    if(event.value==='green' ){
+      this.lineChartData.datasets[0].backgroundColor = '#228B22' + '80';
+      this.lineChartData.datasets[1].backgroundColor = '#ADFF2F' + '80';
+    }
 
-    // if(event.value==='violet' ){
-    //   this.lineChartData.datasets[0].backgroundColor = ' #8A2BE2' + '80';
-    // }
-
-    // this.chart?.render();
-  }
-
-  changePointerColor(event:any){
-
-    // if(event.value==='violet' && this.lineChartData.datasets){
-
-    //   // this.lineChartData.datasets?.pointBackgroundColor
-    //   // this.changePointerColor.lineChartData.data.datasets[0].pointBackgroundColor[i] = 'blue';
-    // }
-
-
-
-    // if(event.value==='sky' && this.lineChartData.datasets ){
-    //   this.lineChartData.datasets[0].hoverBackgroundColor
-    // }
-
-
-
-    // this.chart?.render();
-  }
-
-  changeGridLine(event:any){
-    // scales: {
-    //   x: {
-    //     grid: {
-    //       display: true,
-    //     },
-    //   },
-    // if( this.barChartOptions?.scales ){
-    //   this.barChartOptions.scales=true ;
-    // }
+    if(event.value==='violet' ){
+      this.lineChartData.datasets[0].backgroundColor = '#8A2BE2' + '80';
+      this.lineChartData.datasets[1].backgroundColor = '#6B8E23' + '80';
+    }
 
     this.chart?.render();
   }
+
+
 
 }

@@ -5,14 +5,18 @@
 <div class="flex">
   <div class="flex-none w-[20%]">
     <div class="pl-4 flex flex-col">
-      <p class="text-base">Border Color</p>
+
+      <p class="text-base">Legend Position </p>
       <mat-form-field appearance="outline">
-        <mat-select (selectionChange)="changeBorderColor($any($event))">
-          <mat-option value="green">Green Sky</mat-option>
-          <mat-option value="blue">Blue Pink</mat-option>
-          <mat-option value="green">Green</mat-option>
+        <mat-select (selectionChange)="changeLegend($any($event))">
+          <mat-option value="top">Top</mat-option>
+          <mat-option value="bottom">Bottom</mat-option>
+          <mat-option value="left">Left</mat-option>
+          <mat-option value="right">Right</mat-option>
         </mat-select>
+
       </mat-form-field>
+
 
       <p class="text-base">Background Color</p>
       <mat-form-field appearance="outline">
@@ -23,14 +27,15 @@
         </mat-select>
       </mat-form-field>
 
-      <p class="text-base">Pointer Color</p>
+      <p class="text-base">Border Color</p>
       <mat-form-field appearance="outline">
-        <mat-select (selectionChange)="changePointerColor($any($event))">
-          <mat-option value="white">White</mat-option>
-          <mat-option value="black">Black</mat-option>
-          <mat-option value="green">Green</mat-option>
+        <mat-select (selectionChange)="changeBorderColor($any($event))">
+          <mat-option value="green">Green Sky</mat-option>
+          <mat-option value="blue">Blue Pink</mat-option>
+          <mat-option value="red">Red Lemon</mat-option>
         </mat-select>
       </mat-form-field>
+
     </div>
   </div>
   <div class="ml-6 grow">
