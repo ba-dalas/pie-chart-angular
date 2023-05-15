@@ -128,6 +128,25 @@ export class PieChartComponent implements OnInit, OnChanges {
     this.chart?.render();
   }
 
+  changeValuePosition(event:any){
+    console.log(event.value)
+    if(event.value==='outside' &&  this.pieChartOptions?.plugins?.datalabels ){
+      this.pieChartOptions.plugins.datalabels.anchor = 'end'
+      this.pieChartOptions.plugins.datalabels.align = 'end'
+    }
+    if(event.value==='start' &&  this.pieChartOptions?.plugins?.datalabels ){
+      this.pieChartOptions.plugins.datalabels.anchor = 'end'
+      this.pieChartOptions.plugins.datalabels.align = 'start'
+    }
+    if(event.value==='center' && this.pieChartOptions?.plugins?.datalabels ){
+      this.pieChartOptions.plugins.datalabels.anchor = 'center'
+      this.pieChartOptions.plugins.datalabels.align = 'center'
+    }
+
+
+    this.chart?.render();
+  }
+
   changeBorderColor(event:any){
 
     if(event.value==='white' ){
@@ -149,10 +168,12 @@ export class PieChartComponent implements OnInit, OnChanges {
 
     if(event.value==='white' && this.pieChartOptions?.plugins?.datalabels ){
       this.pieChartOptions.plugins.datalabels.color = '#ffffff'
+
     }
 
     if(event.value==='black' && this.pieChartOptions?.plugins?.datalabels ){
       this.pieChartOptions.plugins.datalabels.color= '#000000'
+
     }
 
     if(event.value==='green' && this.pieChartOptions?.plugins?.datalabels ){
