@@ -33,4 +33,10 @@ export class HomeComponent {
   goToDirectivePage(){
     this.router.navigate(['/directive']);
   }
+
+  goToGausePage(){
+    this.router.navigate(['/gause']);
+  }
+
+
 }

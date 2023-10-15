@@ -7,6 +7,7 @@ import { LineChartShellComponent } from './line-chart-shell/line-chart-shell.com
 import { HomeComponent } from './home/home.component';
 import { MultiAxisLineChartShellComponent } from './multi-axis-line-chart-shell/multi-axis-line-chart-shell.component';
 import { HighlightDirectiveComponent } from './highlight-directive/highlight-directive.component';
+import { GauseChartComponent } from './gause-chart/gause-chart.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,11 @@ const routes: Routes = [
       path: 'directive',
       component: HighlightDirectiveComponent,
     },
+
+    {
+      path:'gause',
+      component:GauseChartComponent
+    }
 ];
 
 @NgModule({

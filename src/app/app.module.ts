@@ -20,6 +20,7 @@ import { HomeComponent } from './home/home.component';
 import {MatSelectModule} from '@angular/material/select';
 import { HighlightDirectiveComponent } from './highlight-directive/highlight-directive.component';
 import { HighlightDirective } from './hover.directive';
+import { GauseChartComponent } from './gause-chart/gause-chart.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { HighlightDirective } from './hover.directive';
     MultiAxisBarChartShellComponent,
     HomeComponent,
     HighlightDirectiveComponent,
-    HighlightDirective
+    HighlightDirective,
+    GauseChartComponent
 
   ],
   imports: [
